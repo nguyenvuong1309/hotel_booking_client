@@ -21,8 +21,7 @@ import BookingPage from './pages/BookingPage';
 // https://www.youtube.com/watch?v=MpQbwtSiZ7E&t=13572s
 
 
-axios.defaults.baseURL = "https://hotel-booking-api-j10l.onrender.com"     //'http://127.0.0.1:4000'
-//axios.defaults.baseURL = process.env.API_LINK;
+axios.defaults.baseURL = 'http://127.0.0.1:4000'
 axios.defaults.withCredentials = true;
 
 function App() {
