@@ -5,17 +5,35 @@ import { useContext, useState } from "react"
 import { Link, Navigate } from "react-router-dom"
 import { UserContext } from "../UserContext";
 
+axios.defaults.withCredentials = true;
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
     const { setUser } = useContext(UserContext);
+    axios.defaults.withCredentials = true;
     async function handleLoginSubmit(ev) {
         ev.preventDefault();
         try {
-            const data = await axios.post('/login', { email, password });
-            setUser(data.data)
-            setRedirect(true)
+            // const data = await axios.post('/login', { email, password });
+            // setUser(data.data)
+            // setRedirect(true)
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
+                method: 'POST',
+                body: JSON.stringify({ email, password }),
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+            });
+
+            if (response.ok) {
+                response.json().then(userInfo => {
+
+                    setUser(userInfo);
+                    setRedirect(true);
+                })
+            } else {
+                alert("Wrong credentials");
+            }
         }
         catch (e) {
             console.log(e)

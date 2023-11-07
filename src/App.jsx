@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes } from "react-router-dom";
 import IndexPage from './pages/IndexPage';
@@ -21,7 +19,7 @@ import BookingPage from './pages/BookingPage';
 // https://www.youtube.com/watch?v=MpQbwtSiZ7E&t=13572s
 
 
-axios.defaults.baseURL = 'http://127.0.0.1:4000'
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL//'http://localhost:4000'
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -32,7 +30,7 @@ function App() {
           <Route index element={<IndexPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/account" element={<ProfilePage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/account/places" element={<PlacesPage />} />
           <Route path="/account/places/new" element={<PlacesFormPage />} />
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
