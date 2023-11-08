@@ -16,6 +16,7 @@ import BookingsPage from './pages/BookingsPage';
 import BookingPage from './pages/BookingPage';
 
 
+
 // https://www.youtube.com/watch?v=MpQbwtSiZ7E&t=13572s
 
 
@@ -39,9 +40,7 @@ function App() {
           <Route path="/account/bookings/:id" element={<BookingPage />} />
         </Route>
       </Routes>
-
     </UserContextProvider>
-
   )
 }
 

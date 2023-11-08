@@ -5,6 +5,7 @@ import { useContext, useState } from "react"
 import { Link, Navigate } from "react-router-dom"
 import { UserContext } from "../UserContext";
 
+
 axios.defaults.withCredentials = true;
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -24,10 +25,8 @@ export default function LoginPage() {
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
             });
-
             if (response.ok) {
                 response.json().then(userInfo => {
-
                     setUser(userInfo);
                     setRedirect(true);
                 })

@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import BookingWidget from "../BookingWidget";
 import PlaceGallery from "../PlaceGallery";
 import AddressLink from "../AddressLink";
+import Comments from "../components/CommentSection/Comments";
 
 
 
@@ -47,6 +48,7 @@ export default function PlacePage() {
                     </div>
                     <div className="mb-4 mt-1 text-sm text-gray-700 leading-5">{place.extraInfo}</div>
                 </div>
+                <Comments />
             </div>
         </div>
     )

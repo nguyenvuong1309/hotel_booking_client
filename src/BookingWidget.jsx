@@ -20,7 +20,7 @@ export default function BookingWidget({ place }) {
     }
 
     useEffect(() => {
-        setName(user.name);
+        setName(user?.name);
     }, [user])
 
     async function bookThisPlace() {

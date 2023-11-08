@@ -18,7 +18,7 @@ import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
 
 
-export default function   SearchBar() {
+export default function SearchBar() {
     const [openDate, setOpenDate] = useState(false);
     const [openOption, setOpenOption] = useState(false);
     const [date, setDate] = useState([
@@ -113,7 +113,7 @@ export default function   SearchBar() {
                     </div>
                     <button className="mr-5 rounded-full w-10 h-10">
                         <svg className="h-6 w-6 text-black ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </button>
                 </div>
