@@ -10,7 +10,7 @@ export default function IndexPage() {
         });
     }, [])
     return (
-        <div className="mt-8 grid gap-x-8 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-8 ml-40 mr-40 grid gap-x-8 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {places.length > 0 && places.map(place => (
                 <Link key={place._id} to={'/place/' + place._id} className="w-50 h-50">
                     <div className="h-50 h-50 mb-2 bg-gray-500 rounded-2xl flex">

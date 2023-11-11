@@ -16,6 +16,7 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 
 export default function SearchBar() {
@@ -54,9 +55,27 @@ export default function SearchBar() {
                             className="headerSearchInput"
                         />
                     </div>
-                    <div onClick={() => setOpenDate(!openDate)} className="flex gap-2 headerSearchItem">
+                    <div className="flex gap-2 relative items-center"
+                    // onClick={() => setOpenDate(!openDate)}
+                    >
                         <FontAwesomeIcon icon={faCalendarDays} className="mt-1" />
-                        <span className="headerSearchText">
+                        <div>
+                            <span
+                                className="bg-white shadow-2xl flex justify-center items-center h-10 rounded-2xl"
+                                onClick={() => setOpenDate(!openDate)}>{`${format(
+                                    date[0]?.startDate,
+                                    "MM/dd/yyyy"
+                                )} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+                            {openDate && (
+                                <DateRange
+                                    onChange={(item) => setDate([item.selection])}
+                                    minDate={new Date()}
+                                    ranges={date}
+                                    className="absolute mt-2 z-50 shadow-lg"
+                                />
+                            )}
+                        </div>
+                        {/* <span className="headerSearchText">
                             {`${format(date[0].startDate, 'yyyy-MM-dd')} to ${format(date[0].endDate, 'yyyy-MM-dd')}`}
                         </span>
                         {openDate && (
@@ -67,14 +86,14 @@ export default function SearchBar() {
                                 ranges={date}
                                 className="absolute mt-11"
                             />
-                        )}
+                        )} */}
                     </div>
                     <div className="flex gap-2 headerSearchItem">
                         <div onClick={() => setOpenOption(!openOption)}>
                             <FontAwesomeIcon icon={faPerson} className="mt-1" />
                             <span className="headerSearchText">{` ${options.adult} adult . ${options.children} children . ${options.room} room`}</span>
                         </div>
-                        {openOption && (<div className="options absolute mt-11 bg-gray-200 w-40 h-40 rounded-lg">
+                        {openOption && (<div className="options absolute mt-11 bg-gray-200 w-40 h-40 rounded-lg z-50 shadow-lg">
                             <div className="optionItem flex mt-5 justify-between">
                                 <span className="optionText">Adult</span>
                                 <div className="flex gap-4">
@@ -112,9 +131,12 @@ export default function SearchBar() {
                         )}
                     </div>
                     <button className="mr-5 rounded-full w-10 h-10">
-                        <svg className="h-6 w-6 text-black ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
+                        <Link to={"/hotels"} state={{ destination: "dalat" }} >
+                            {/* <Link to={{ pathname: "/hotels", state: { destination: "dalat" } }} > */}
+                            <svg className="h-6 w-6 text-black ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </Link>
                     </button>
                 </div>
             </div >

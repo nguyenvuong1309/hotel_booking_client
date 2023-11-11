@@ -14,6 +14,8 @@ import PlacesFormPage from './pages/PlacesFormPage';
 import PlacePage from './pages/PlacePage';
 import BookingsPage from './pages/BookingsPage';
 import BookingPage from './pages/BookingPage';
+import BusesBooking from './pages/BusesBookingPage/BusesBooking';
+import HotelList from '../src/pages/HotelList'
 
 
 
@@ -39,6 +41,9 @@ function App() {
           <Route path="/account/bookings" element={<BookingsPage />} />
           <Route path="/account/bookings/:id" element={<BookingPage />} />
         </Route>
+        <Route path="/booking-car" element={<BusesBooking />} />
+
+        <Route path="/hotels" element={<HotelList />} />
       </Routes>
     </UserContextProvider>
   )

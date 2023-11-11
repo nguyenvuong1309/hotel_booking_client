@@ -1,10 +1,10 @@
-import DropDownTransport from "./DropDownTransport/DropDownTransport";
+import FlightDropdDown from "./DropDown/FlightDropDown";
+import TransportDropDown from "./DropDown/TransportDropDown";
 
 
 
-function handleClick() {
-    console.log("Button clicked");
-}
+
+
 export default function HeaderList() {
     return (
         <div>
@@ -20,29 +20,12 @@ export default function HeaderList() {
                         rental car
                     </div>
                 </div>
-                <div className="flex gap-2 bg-slate-500 rounded-full items-center">
-                    <svg className="h-7 w-7 text-black ml-2" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
-                    </svg>
-                    <div className="mr-2">
-                        fight
-                    </div>
+                <div>
+                    <FlightDropdDown />
                 </div>
-                <div className="flex gap-2 bg-slate-500 rounded-full items-center" onMouseOver={handleClick}>
-                    <svg className="h-7 w-7 text-black ml-2" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <circle cx="7" cy="17" r="2" />
-                        <circle cx="17" cy="17" r="2" />
-                        <path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
-                    </svg>
-                    <div className="flex mr-2">
-                        transport
-                    </div>
+                <div >
+                    <TransportDropDown />
                 </div>
-            </div>
-            <div className="relative left-0">
-                <DropDownTransport />
             </div>
         </div>
     );

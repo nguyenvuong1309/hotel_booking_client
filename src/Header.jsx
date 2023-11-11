@@ -56,9 +56,6 @@ export default function Header() {
             <div>
                 <HeaderList />
             </div>
-            <div className="text-center">
-                Top 10 destination should go
-            </div>
         </div>
     )
 }
