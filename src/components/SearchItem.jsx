@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const SearchItem = ({ item }) => {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center border-2 border-black border-solid bg-cover ml-10 mr-40 h-52 rounded-2xl">
 
-            <img src={item.photos[0]} alt="" className="h-40 w-40 items-center" />
-            <div className="grid ml-4">
+            <img src={item.photos[0]} alt="" className="h-40 w-40 items-center m-4" />
+            <div className="grid ml-4 ">
                 <h1 className=" text-cyan-400 font-bold text-xl">{item.name}</h1>
                 <span className="">{item.distance}m from center</span>
                 <span className="bg-emerald-600 w-32 rounded-2xl flex items-center justify-center">Free airport taxi</span>
@@ -21,7 +21,7 @@ const SearchItem = ({ item }) => {
                 </span>
 
             </div>
-            <div className="grid">
+            <div className="grid m-4">
                 {item.rating && <div className="">
                     <span>Excellent</span>
                     <button>{item.rating}</button>

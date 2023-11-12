@@ -68,7 +68,7 @@ const HotelList = () => {
             </div>
             {/* <Header type="list" /> */}
             <div className="listContainer">
-                <div className="flex">
+                <div className="flex gap-10">
                     <div className="bg-amber-200 shadow-2xl ml-40 rounded-2xl p-4">
                         <h1 className="text-2xl font-bold">Search</h1>
                         <div className="lsItem">
@@ -161,13 +161,15 @@ const HotelList = () => {
                             Search
                         </button>
                     </div>
-                    <div className="border border-solid bg-cover ml-10 mr-40 h-48">
+                    <div className="">
                         {loading ? (
                             "loading"
                         ) : (
                             <>
                                 {data.map((item) => (
-                                    <SearchItem item={item} key={item._id} />
+                                    <div className="mt-10">
+                                        <SearchItem item={item} key={item._id} />
+                                    </div>
                                 ))}
                             </>
                         )}
