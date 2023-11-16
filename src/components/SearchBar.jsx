@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
 export default function SearchBar() {
     const [openDate, setOpenDate] = useState(false);
     const [openOption, setOpenOption] = useState(false);
+
+    const [destination, setDestination] = useState("");
     const [date, setDate] = useState([
         {
             startDate: new Date(),
@@ -53,6 +55,7 @@ export default function SearchBar() {
                         <input type="text"
                             placeholder="Where are you going? "
                             className="headerSearchInput"
+                            onChange={(ev) => setDestination(ev.target.value)}
                         />
                     </div>
                     <div className="flex gap-2 relative items-center"
@@ -65,7 +68,8 @@ export default function SearchBar() {
                                 onClick={() => setOpenDate(!openDate)}>{`${format(
                                     date[0]?.startDate,
                                     "MM/dd/yyyy"
-                                )} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+                                )} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
+                            </span>
                             {openDate && (
                                 <DateRange
                                     onChange={(item) => setDate([item.selection])}
@@ -131,7 +135,7 @@ export default function SearchBar() {
                         )}
                     </div>
                     <button className="mr-5 rounded-full w-10 h-10">
-                        <Link to={"/hotels"} state={{ destination: "dalat" }} >
+                        <Link to={"/hotels"} state={{ destination: destination, dates: date, options: options }} >
                             {/* <Link to={{ pathname: "/hotels", state: { destination: "dalat" } }} > */}
                             <svg className="h-6 w-6 text-black ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

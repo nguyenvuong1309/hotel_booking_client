@@ -1,9 +1,10 @@
 
 import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { UserContext } from "./UserContext";
+import { UserContext } from "./context/UserContext";
 import HeaderList from "./components/HeaderList";
 import SearchBar from "./components/SearchBar";
+import { ConnectWallet } from "@thirdweb-dev/react";
 export default function Header() {
     const { user } = useContext(UserContext);
     const { id } = useParams();

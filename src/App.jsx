@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import Layout from './Layout';
 import RegisterPage from './pages/RegisterPage';
 import axios from 'axios';
-import { UserContextProvider } from './UserContext';
+import { UserContextProvider } from './context/UserContext';
 import AccountPage from './pages/AccountPage';
 import ProfilePage from './pages/ProfilePage';
 import PlacesPage from './pages/PlacesPage';
@@ -16,6 +16,13 @@ import BookingsPage from './pages/BookingsPage';
 import BookingPage from './pages/BookingPage';
 import BusesBooking from './pages/BusesBookingPage/BusesBooking';
 import HotelList from '../src/pages/HotelList'
+import AdminPage from './pages/AdminPage/AdminPage';
+import { DarkModeContextProvider } from './pages/AdminPage/context/darkModeContext';
+import Users from './pages/AdminPage/components/Users';
+import EditUser from './pages/AdminPage/components/editUser';
+import NftMarketPlace from './pages/nft-market-place/NftMarketPlace';
+import MintNFTPage from './pages/nft-market-place/pages/MintNFTPage';
+
 
 
 
@@ -27,25 +34,37 @@ axios.defaults.withCredentials = true;
 
 function App() {
   return (
-    <UserContextProvider>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<IndexPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/account" element={<AccountPage />} />
-          <Route path="/account/places" element={<PlacesPage />} />
-          <Route path="/account/places/new" element={<PlacesFormPage />} />
-          <Route path="/account/places/:id" element={<PlacesFormPage />} />
-          <Route path="/place/:id" element={<PlacePage />} />
-          <Route path="/account/bookings" element={<BookingsPage />} />
-          <Route path="/account/bookings/:id" element={<BookingPage />} />
-        </Route>
-        <Route path="/booking-car" element={<BusesBooking />} />
 
-        <Route path="/hotels" element={<HotelList />} />
-      </Routes>
+    <UserContextProvider>
+      <DarkModeContextProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<IndexPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/account" element={<AccountPage />} />
+            <Route path="/account/places" element={<PlacesPage />} />
+            <Route path="/account/places/new" element={<PlacesFormPage />} />
+            <Route path="/account/places/:id" element={<PlacesFormPage />} />
+            <Route path="/place/:id" element={<PlacePage />} />
+            <Route path="/account/bookings" element={<BookingsPage />} />
+            <Route path="/account/bookings/:id" element={<BookingPage />} />
+          </Route>
+          <Route path="/booking-car" element={<BusesBooking />} />
+
+          <Route path="/hotels" element={<HotelList />} />
+
+          {/* Route admin */}
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/users" element={<Users />} />
+          <Route path="/admin/edit-user" element={<EditUser />} />
+          <Route path="/nft-market-place" element={<NftMarketPlace />} />
+          <Route path="/nft-market-place/mint-NFT" element={<MintNFTPage />} />
+        </Routes>
+      </DarkModeContextProvider>
     </UserContextProvider>
+
+
   )
 }
 

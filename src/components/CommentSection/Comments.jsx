@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../../context/UserContext";
 import moment from 'moment';
 import SimpleDateTime from 'react-simple-timestamp-to-date';
 

@@ -15,6 +15,7 @@ import Footer from "../components/Footer";
 
 const HotelList = () => {
     const location = useLocation();
+    console.log("🚀 ~ file: HotelList.jsx:18 ~ HotelList ~ location:", location.state)
 
     // const currentDate = new Date();
 
@@ -26,21 +27,21 @@ const HotelList = () => {
     // // Format the date as "MM/dd/yyyy"
     // const formattedDate = `${month}/${day}/${year}`;
 
-    location.state = {
-        destination: "madrid",
-        dates: [
-            {
-                startDate: new Date(),
-                endDate: new Date(),
-                key: 'selection'
-            }
-        ],
-        options: {
-            adult: 1,
-            children: 0,
-            room: 1,
-        }
-    }
+    // location.state = {
+    //     destination: "madrid",
+    //     dates: [
+    //         {
+    //             startDate: new Date(),
+    //             endDate: new Date(),
+    //             key: 'selection'
+    //         }
+    //     ],
+    //     options: {
+    //         adult: 1,
+    //         children: 0,
+    //         room: 1,
+    //     }
+    // }
 
     const [destination, setDestination] = useState(location?.state?.destination);
     const [dates, setDates] = useState(location?.state?.dates);
@@ -79,10 +80,13 @@ const HotelList = () => {
                             <label className="font-bold mb-2 mt-2">Check-in Date</label>
                             <span
                                 className="bg-white shadow-2xl flex justify-center items-center h-10 rounded-2xl"
-                                onClick={() => setOpenDate(!openDate)}>{`${format(
-                                    dates[0]?.startDate,
-                                    "MM/dd/yyyy"
-                                )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
+                                onClick={() => setOpenDate(!openDate)}>{
+                                    dates ?
+                                        (`${format(dates[0]?.startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`)
+                                        :
+                                        (`${format(new Date(), "MM/dd/yyyy")} to ${format(new Date(), "MM/dd/yyyy")}`)
+                                }
+                            </span>
                             {openDate && (
                                 <DateRange
                                     onChange={(item) => setDates([item.selection])}
@@ -126,7 +130,7 @@ const HotelList = () => {
                                             type="number"
                                             min={1}
                                             className="lsOptionInput"
-                                            placeholder={options.adult}
+                                            placeholder={options?.adult}
                                         />
                                     </div>
                                 </div>
@@ -137,7 +141,7 @@ const HotelList = () => {
                                             type="number"
                                             min={0}
                                             className="lsOptionInput"
-                                            placeholder={options.children}
+                                            placeholder={options?.children}
                                         />
                                     </div>
                                 </div>
@@ -148,7 +152,7 @@ const HotelList = () => {
                                             type="number"
                                             min={1}
                                             className=""
-                                            placeholder={options.room}
+                                            placeholder={options?.room}
                                         />
                                     </div>
                                 </div>
@@ -167,7 +171,7 @@ const HotelList = () => {
                         ) : (
                             <>
                                 {data.map((item) => (
-                                    <div className="mt-10">
+                                    <div className="" key={item._id}>
                                         <SearchItem item={item} key={item._id} />
                                     </div>
                                 ))}

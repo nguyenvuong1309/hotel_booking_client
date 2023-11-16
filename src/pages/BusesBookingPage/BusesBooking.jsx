@@ -4,6 +4,7 @@ import halong from "../../../public/ha_long.jpg";
 import sapa from "../../../public/sa_pa.jpg";
 import hochiminh from "../../../public/ho_chi_minh.jpg";
 import Footer from "../../components/Footer";
+import { Link } from "react-router-dom";
 
 
 export default function BusesBooking() {
@@ -89,9 +90,9 @@ export default function BusesBooking() {
                 </div>
                 <div className="flex justify-between">
                     <div className="grid">
-                        <div className="mt-4">
+                        <Link to="/test" className="mt-4">
                             Bangkok → Chiang Mai
-                        </div>
+                        </Link>
                         <div className="mt-4">
                             Bangkok → Phuket
                         </div>

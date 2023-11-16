@@ -1,10 +1,48 @@
 
 
 
-export default function ProfilePage() {
+export default function ProfilePage({ user, setUser }) {
+    console.log("🚀 ~ file: ProfilePage.jsx:5 ~ ProfilePage ~ user:", user)
+    async function logout() {
+        await axios.post("/logout");
+        setUser(null);
+        setRedirect('/');
+    }
     return (
         <>
-            <h1>Profile Page</h1>
+            <div className="text-center max-w-lg mx-auto items-center justify-center">
+                <div className=" flex justify-center gap-10 text-xl">
+                    <div>
+                        <div className="flex">
+                            <div className="flex m-0">Name</div>
+                        </div>
+                        <div className="flex">
+                            <div>Email</div>
+                        </div>
+                        <div className="flex">
+                            <div>Phone number</div>
+                        </div>
+                        <div className="flex">
+                            <div>city</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="flex ">
+                            <div>{user?.name}</div>
+                        </div>
+                        <div className="flex">
+                            <div>{user?.email}</div>
+                        </div>
+                        <div className="flex justify-around">
+                            <div>{ }</div>
+                        </div>
+                        <div className="flex justify-around">
+                            <div>{ }</div>
+                        </div>
+                    </div>
+                </div>
+                <button onClick={logout} className="primary max-w-sn mt-2">Logout</button>
+            </div>
         </>
     )
 }
