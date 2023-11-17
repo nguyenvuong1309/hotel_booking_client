@@ -55,7 +55,6 @@ const Comments = ({ currentPlaceId }) => {
             credentials: 'include',
         }).then(response => {
             response.json().then(data => {
-                console.log("🚀 ~ file: Comments.jsx:55 ~ response.json ~ data:", data)
                 setComments(data)
             });
         });

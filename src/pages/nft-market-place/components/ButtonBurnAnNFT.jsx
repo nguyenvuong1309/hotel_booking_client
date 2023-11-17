@@ -4,7 +4,7 @@ import { useBurnNFT, useContract } from "@thirdweb-dev/react";
 
 
 const ButtonBurnAnNFT = ({ id }) => {
-    const { contract } = useContract("0x882E5e76D12ba94983D0813946DE4738C2691A21");
+    const { contract } = useContract("0x39798cAF83acCCACcC8b9BBC6158859E1330904D");
     const {
         mutate: burnNFT,
         isLoading,

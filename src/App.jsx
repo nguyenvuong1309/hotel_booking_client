@@ -22,6 +22,10 @@ import Users from './pages/AdminPage/components/Users';
 import EditUser from './pages/AdminPage/components/editUser';
 import NftMarketPlace from './pages/nft-market-place/NftMarketPlace';
 import MintNFTPage from './pages/nft-market-place/pages/MintNFTPage';
+import AnNFTPage from './pages/nft-market-place/pages/AnNFTPage';
+import SellPage from './pages/nft-market-place/pages/SellPage';
+import BuyPage from './pages/nft-market-place/pages/BuyPage';
+import SaleInfo from './pages/nft-market-place/components/SaleInfo';
 
 
 
@@ -60,6 +64,10 @@ function App() {
           <Route path="/admin/edit-user" element={<EditUser />} />
           <Route path="/nft-market-place" element={<NftMarketPlace />} />
           <Route path="/nft-market-place/mint-NFT" element={<MintNFTPage />} />
+          <Route path="/nft-market-place/:id" element={<AnNFTPage />} />
+          <Route path="/nft-market-place/sell" element={<SellPage />} />
+          <Route path="/nft-market-place/buy" element={<BuyPage />} />
+          <Route path="/nft-market-place/SaleInfo/:id" element={<SaleInfo />} />
         </Routes>
       </DarkModeContextProvider>
     </UserContextProvider>

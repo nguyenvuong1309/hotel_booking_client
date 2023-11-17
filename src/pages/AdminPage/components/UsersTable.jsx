@@ -23,7 +23,6 @@ const UsersTable = () => {
   }
 
   const handleOnClick = (id) => {
-    console.log("🚀 ~ file: UsersTable.jsx:26 ~ handleOnClick ~ id:", id)
     setNavigateToEditUser(!navigateToEditUser);
     setUserId(id);
   }

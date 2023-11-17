@@ -15,7 +15,6 @@ import Footer from "../components/Footer";
 
 const HotelList = () => {
     const location = useLocation();
-    console.log("🚀 ~ file: HotelList.jsx:18 ~ HotelList ~ location:", location.state)
 
     // const currentDate = new Date();
 
@@ -55,10 +54,8 @@ const HotelList = () => {
         `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
         // `/hotels`
     );
-    console.log("🚀 ~ file: HotelList.jsx:54 ~ HotelList ~ data:", data)
 
     const handleClick = () => {
-        console.log(destination, min, max)
         reFetch();
     };
 

@@ -2,7 +2,6 @@
 
 
 export default function ProfilePage({ user, setUser }) {
-    console.log("🚀 ~ file: ProfilePage.jsx:5 ~ ProfilePage ~ user:", user)
     async function logout() {
         await axios.post("/logout");
         setUser(null);

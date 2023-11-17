@@ -13,7 +13,7 @@ const MintNFTPage = () => {
     const [description, setDescription] = useState("");
 
 
-    const { contract } = useContract("0x882E5e76D12ba94983D0813946DE4738C2691A21");
+    const { contract } = useContract(import.meta.env.VITE_NFT_COLLECTION_ADDRESS);
 
 
     return (
@@ -29,7 +29,7 @@ const MintNFTPage = () => {
                     Mint
                 </button> */}
                 <Web3Button
-                    contractAddress={"0x882E5e76D12ba94983D0813946DE4738C2691A21"}
+                    contractAddress={import.meta.env.VITE_NFT_COLLECTION_ADDRESS}
                     className="flex bg-purple-400 rounded-3xl font-semibold"
                     action={(contract) => {
                         contract.erc721.mint({

@@ -21,7 +21,6 @@ const EditUser = ({ inputs, title }) => {
             try {
                 const res = await axios.get(`/users/${id}`);
                 setData(res.data);
-                console.log("🚀 ~ file: editUser.jsx:25 ~ fetchData ~ res:", res)
             } catch (err) {
                 console.log("🚀 ~ file: UsersTable.jsx:17 ~ fetchData ~ err:", err)
             }

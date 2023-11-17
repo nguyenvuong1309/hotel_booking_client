@@ -13,7 +13,6 @@ export default function PlacesPage() {
         // axios.get('/user-places').then(({ data }) => {
         //     setPlaces(data);
         // })
-        // console.log(import.meta.env.VITE_BASE_URL);
         fetch(`${import.meta.env.VITE_BASE_URL}/user-places`, {
             credentials: 'include'
         })
