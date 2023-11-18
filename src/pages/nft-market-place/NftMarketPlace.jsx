@@ -46,7 +46,7 @@ export default function NftMarketPlace() {
                                     nft?.owner == ownerAddress && (
 
                                         //  <Link to={`/nft-market-place/${nft?.metadata?.id}`} state={{ id: nft?.metadata?.id }} className="grid bg-slate-300 rounded justify-center" key={nft?.metadata?.id} >
-                                        <NFTItem nft={nft} />
+                                        <NFTItem nft={nft} key={nft?.id} />
                                         //     <div className="flex justify-around items-center">
                                         //         <div className="flex h-20 justify-center items-center font-bold">
                                         //             {nft.metadata.name}

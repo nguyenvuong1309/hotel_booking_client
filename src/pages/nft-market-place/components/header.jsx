@@ -35,6 +35,9 @@ const Header = () => {
                     <Link to={"/nft-market-place/sell"}>
                         sell
                     </Link>
+                    <Link to={"/nft-market-place/transfer-token"}>
+                        transfer token
+                    </Link>
                 </div>
                 <div className="right-5">
                     <ConnectWallet

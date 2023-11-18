@@ -20,15 +20,15 @@ const BuyPage = () => {
             import.meta.env.VITE_MARKETPLACE_ADDRESS,
             "marketplace-v3"
         );
-    const { contract: nftCollection } = useContract("0x39798cAF83acCCACcC8b9BBC6158859E1330904D");
+    const { contract: nftCollection } = useContract(import.meta.env.VITE_MARKETPLACE_ADDRESS);
 
 
-    // const { data: directListing, isLoading: loadingDirectListing } =
-    //     useValidDirectListings(marketplace, {
-    //         tokenContract: import.meta.env.VITE_NFT_COLLECTION_ADDRESS,
-    //         tokenId: nft?.metadata?.id,
-    //     });
-    // console.log("🚀 ~ file: AnNFTPage.jsx:43 ~ AnNFTPage ~ directListing:", directListing)
+    const { data: directListing, isLoading: loadingDirectListing } =
+        useValidDirectListings(marketplace, {
+            tokenContract: import.meta.env.VITE_NFT_COLLECTION_ADDRESS,
+            tokenId: nftCollection?.metadata?.id,
+        });
+    console.log("🚀 ~ file: AnNFTPage.jsx:43 ~ AnNFTPage ~ directListing:", directListing)
 
 
 
@@ -62,7 +62,7 @@ const BuyPage = () => {
 
 
     return (
-        <div>
+        <div className="mb-96">
             <div className="mt-5">
                 <Header />
             </div>

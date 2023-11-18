@@ -26,6 +26,7 @@ import AnNFTPage from './pages/nft-market-place/pages/AnNFTPage';
 import SellPage from './pages/nft-market-place/pages/SellPage';
 import BuyPage from './pages/nft-market-place/pages/BuyPage';
 import SaleInfo from './pages/nft-market-place/components/SaleInfo';
+import TransferToken from './pages/nft-market-place/pages/TransferTokenPage';
 
 
 
@@ -68,6 +69,7 @@ function App() {
           <Route path="/nft-market-place/sell" element={<SellPage />} />
           <Route path="/nft-market-place/buy" element={<BuyPage />} />
           <Route path="/nft-market-place/SaleInfo/:id" element={<SaleInfo />} />
+          <Route path="/nft-market-place/transfer-token" element={<TransferToken />} />
         </Routes>
       </DarkModeContextProvider>
     </UserContextProvider>
