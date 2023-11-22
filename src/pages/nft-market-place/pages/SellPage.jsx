@@ -1,7 +1,7 @@
 import { useAddress, useContract, useOwnedNFTs } from "@thirdweb-dev/react";
-import Header from "../components/header";
+import Header from "../components-for-NFT/header";
 import { useState } from "react";
-import NFTItem from "../components/NFTItem";
+import NFTItem from "../components-for-NFT/NFTItem";
 
 
 
@@ -15,7 +15,7 @@ const SellPage = () => {
     const { data, isLoading } = useOwnedNFTs(contract, address);
     console.log("🚀 ~ file: SellPage.jsx:15 ~ SellPage ~ data:", data)
     return (
-        <div>
+        <div className="mb-96">
             <div className="mt-5">
                 <Header />
             </div>

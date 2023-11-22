@@ -4,7 +4,7 @@
 
 
 import { MediaRenderer, ThirdwebNftMedia, Web3Button, useContract, useNFT, useValidDirectListings, useValidEnglishAuctions } from "@thirdweb-dev/react";
-import Header from "../components/header";
+import Header from "../components-for-NFT/header";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -47,10 +47,6 @@ const AnNFTPage = () => {
         });
     console.log("🚀 ~ file: AnNFTPage.jsx:43 ~ AnNFTPage ~ directListing:", directListing)
 
-
-
-
-    const [bidValue, setBidValue] = useState(null);
 
 
     const { data: auctionListing, isLoading: loadingAuction } =
@@ -158,9 +154,15 @@ const AnNFTPage = () => {
                                         </Web3Button>
                                     </div>
                                 ) : (
-                                    <div className="mb-10 font-bold text-2xl mt-5">
-                                        Not listed
-                                    </div>
+                                    nft?.owner != "0x0000000000000000000000000000000000000000" ? (
+                                        <div className="mb-10 font-bold text-2xl mt-5">
+                                            Not listed
+                                        </div>
+                                    ) : (
+                                        <div className="mb-10 font-bold text-2xl mt-5">
+                                            Not claimed
+                                        </div>
+                                    )
                                 )}
                             </div>
                         </div>

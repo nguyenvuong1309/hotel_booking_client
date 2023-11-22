@@ -4,6 +4,8 @@ import axios from "axios";
 import { useContext, useState } from "react"
 import { Link, Navigate } from "react-router-dom"
 import { UserContext } from "../context/UserContext";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 axios.defaults.withCredentials = true;
@@ -30,13 +32,14 @@ export default function LoginPage() {
                     setUser(userInfo);
                     setRedirect(true);
                 })
+                toast.success("Login sucess");
             } else {
-                alert("Wrong credentials");
+                toast.error("Wrong credentials");
             }
         }
         catch (e) {
             console.log(e)
-            alert("Login failed");
+            toast.error("Login failed");
         }
     }
 

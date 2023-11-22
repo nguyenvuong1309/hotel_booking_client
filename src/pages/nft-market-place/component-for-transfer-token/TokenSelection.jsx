@@ -38,7 +38,7 @@ const TokenSelection = ({ tokenAddress, isSelected }) => {
             {isTokenMetadataLoading ? (
                 <div>is loading ...</div>
             ) : (
-                <div className={coinBorderColor + "border-2 w-16 h-10 mb-10 flex font-bold justify-center items-center"} >
+                <div className={coinBorderColor + "border-2 w-16 h-10 flex font-bold justify-center items-center"} >
                     {tokenMetadata?.symbol}
                 </div>
             )}

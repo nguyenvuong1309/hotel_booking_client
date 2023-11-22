@@ -1,9 +1,14 @@
 
 
 
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function ProfilePage({ user, setUser }) {
     async function logout() {
         await axios.post("/logout");
+        toast.success("Logout success");
         setUser(null);
         setRedirect('/');
     }

@@ -3,10 +3,10 @@
 
 
 import { ConnectWallet, ThirdwebNftMedia, useAddress, useContract, useContractRead, useContractWrite, useNFTs } from "@thirdweb-dev/react";
-import Header from "./components/header";
-import NFTItem from "./components/NFTItem";
+import Header from "./components-for-NFT/header";
+import NFTItem from "./components-for-NFT/NFTItem";
 import { Link } from "react-router-dom";
-import ButtonBurnAnNFT from "./components/ButtonBurnAnNFT";
+import ButtonBurnAnNFT from "./components-for-NFT/ButtonBurnAnNFT";
 
 const contractAddress = "0x39798cAF83acCCACcC8b9BBC6158859E1330904D"
 //const ownerAddress = "0x72fc2C9811abc21A534550f31C5bA62dcc56Ec53"

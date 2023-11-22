@@ -7,8 +7,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { MediaRenderer, ThirdwebNftMedia, Web3Button, useContract, useNFT, useNFTs, useValidDirectListings, useValidEnglishAuctions } from "@thirdweb-dev/react";
-import Header from "../components/header";
-import NFTItem from "../components/NFTItem";
+import Header from "../components-for-NFT/header";
+import NFTItem from "../components-for-NFT/NFTItem";
 
 const BuyPage = () => {
 
@@ -78,7 +78,7 @@ const BuyPage = () => {
                         ) : (
                             nfts.map((nft) =>
                             (
-                                <NFTItem nft={nft} />
+                                <NFTItem nft={nft} key={nft?.id} />
                             )
                             )
                         )

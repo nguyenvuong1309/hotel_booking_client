@@ -25,8 +25,10 @@ import MintNFTPage from './pages/nft-market-place/pages/MintNFTPage';
 import AnNFTPage from './pages/nft-market-place/pages/AnNFTPage';
 import SellPage from './pages/nft-market-place/pages/SellPage';
 import BuyPage from './pages/nft-market-place/pages/BuyPage';
-import SaleInfo from './pages/nft-market-place/components/SaleInfo';
+import SaleInfo from './pages/nft-market-place/components-for-NFT/SaleInfo';
 import TransferToken from './pages/nft-market-place/pages/TransferTokenPage';
+import RoomsPage from './pages/RoomsPage';
+import { RoomsContextProvider } from './context/RoomContext';
 
 
 
@@ -41,37 +43,40 @@ function App() {
   return (
 
     <UserContextProvider>
-      <DarkModeContextProvider>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<IndexPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/account" element={<AccountPage />} />
-            <Route path="/account/places" element={<PlacesPage />} />
-            <Route path="/account/places/new" element={<PlacesFormPage />} />
-            <Route path="/account/places/:id" element={<PlacesFormPage />} />
-            <Route path="/place/:id" element={<PlacePage />} />
-            <Route path="/account/bookings" element={<BookingsPage />} />
-            <Route path="/account/bookings/:id" element={<BookingPage />} />
-          </Route>
-          <Route path="/booking-car" element={<BusesBooking />} />
+      <RoomsContextProvider>
+        <DarkModeContextProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<IndexPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/account" element={<AccountPage />} />
+              <Route path="/account/places" element={<PlacesPage />} />
+              <Route path="/account/places/new" element={<PlacesFormPage />} />
+              <Route path="/account/places/:id" element={<PlacesFormPage />} />
+              <Route path="/place/:id" element={<PlacePage />} />
+              <Route path="/account/bookings" element={<BookingsPage />} />
+              <Route path="/account/bookings/:id" element={<BookingPage />} />
+              <Route path="/Rooms" element={<RoomsPage />} />
+            </Route>
+            <Route path="/booking-car" element={<BusesBooking />} />
 
-          <Route path="/hotels" element={<HotelList />} />
+            <Route path="/hotels" element={<HotelList />} />
 
-          {/* Route admin */}
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/admin/users" element={<Users />} />
-          <Route path="/admin/edit-user" element={<EditUser />} />
-          <Route path="/nft-market-place" element={<NftMarketPlace />} />
-          <Route path="/nft-market-place/mint-NFT" element={<MintNFTPage />} />
-          <Route path="/nft-market-place/:id" element={<AnNFTPage />} />
-          <Route path="/nft-market-place/sell" element={<SellPage />} />
-          <Route path="/nft-market-place/buy" element={<BuyPage />} />
-          <Route path="/nft-market-place/SaleInfo/:id" element={<SaleInfo />} />
-          <Route path="/nft-market-place/transfer-token" element={<TransferToken />} />
-        </Routes>
-      </DarkModeContextProvider>
+            {/* Route admin */}
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin/users" element={<Users />} />
+            <Route path="/admin/edit-user" element={<EditUser />} />
+            <Route path="/nft-market-place" element={<NftMarketPlace />} />
+            <Route path="/nft-market-place/mint-NFT" element={<MintNFTPage />} />
+            <Route path="/nft-market-place/:id" element={<AnNFTPage />} />
+            <Route path="/nft-market-place/sell" element={<SellPage />} />
+            <Route path="/nft-market-place/buy" element={<BuyPage />} />
+            <Route path="/nft-market-place/SaleInfo/:id" element={<SaleInfo />} />
+            <Route path="/nft-market-place/transfer-token" element={<TransferToken />} />
+          </Routes>
+        </DarkModeContextProvider>
+      </RoomsContextProvider>
     </UserContextProvider>
 
 

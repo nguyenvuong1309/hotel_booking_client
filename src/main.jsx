@@ -4,12 +4,15 @@ import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { ThirdwebProvider } from '@thirdweb-dev/react';
-//import { ethers } from "ethers";
+import { ToastContainer } from 'react-toastify'
+// import { ethers } from "ethers";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
+      <ToastContainer>
+      </ToastContainer>
       <ThirdwebProvider
         activeChain="fantom-testnet"
         // signer={new ethers.providers.Web3Provider(window.ethereum).getSigner()}

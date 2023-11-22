@@ -4,13 +4,22 @@
 // import { ReactComponent as avocado_nft } from './avocado_nft.svg'
 
 import { ConnectWallet } from "@thirdweb-dev/react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 
 
 
 
 const Header = () => {
+    const state = useLocation();
+    const pathname = state.pathname.split('/')[2];
+    const [onPage, setOnPage] = useState("");
+    console.log("🚀 ~ file: header.jsx:18 ~ Header ~ onPage:", onPage == "buy")
+    useEffect(() => {
+        setOnPage(pathname);
+    }, [])
+    console.log("🚀 ~ file: header.jsx:15 ~ Header ~ state:", state)
     return (
         <div>
             <div className="flex items-center  justify-around">
@@ -28,16 +37,22 @@ const Header = () => {
                         Avocado
                     </div>
                 </Link>
-                <div className="flex gap-10">
-                    <Link to={"/nft-market-place/buy"}>
-                        buy
-                    </Link>
-                    <Link to={"/nft-market-place/sell"}>
-                        sell
-                    </Link>
-                    <Link to={"/nft-market-place/transfer-token"}>
-                        transfer token
-                    </Link>
+                <div className="flex gap-4">
+                    <div className={onPage?.toString() == "buy" ? " bg-purple-100 py-1 px-2 rounded-xl flex justify-center items-center w-fit h-fit" : " py-1 px-2 rounded-xl flex justify-center items-center bg-white w-fit h-fit"} >
+                        <Link to={"/nft-market-place/buy"}>
+                            buy
+                        </Link>
+                    </div>
+                    <div className={onPage?.toString() == "sell" ? " bg-purple-100 py-1 px-2 rounded-xl flex justify-center items-center w-fit h-fit" : " py-1 px-2 rounded-xl flex justify-center items-center bg-white w-fit h-fit"}>
+                        <Link to={"/nft-market-place/sell"}>
+                            sell
+                        </Link>
+                    </div>
+                    <div className={onPage?.toString() == "transfer-token" ? " bg-purple-100 py-1 px-2 rounded-xl flex justify-center items-center w-fit h-fit" : " py-1 px-2 rounded-xl flex justify-center items-center bg-white w-fit h-fit"}>
+                        <Link to={"/nft-market-place/transfer-token"}>
+                            transfer token
+                        </Link>
+                    </div>
                 </div>
                 <div className="right-5">
                     <ConnectWallet
@@ -45,7 +60,7 @@ const Header = () => {
                     />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

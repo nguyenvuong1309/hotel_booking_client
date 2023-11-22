@@ -56,9 +56,19 @@ const NFTItem = ({ nft }) => {
                                 </div>
 
                             ) : (
-                                <div className="mb-10 font-bold text-2xl mt-5">
-                                    Not listed
-                                </div>
+                                <>
+                                    {
+                                        nft?.owner != "0x0000000000000000000000000000000000000000" ? (
+                                            <div className="mb-10 font-bold text-2xl mt-5">
+                                                Not listed
+                                            </div>
+                                        ) : (
+                                            <div className="mb-10 font-bold text-2xl mt-5">
+                                                Not claimed
+                                            </div>
+                                        )
+                                    }
+                                </>
                             )}
                         </div>
                         <div></div>
