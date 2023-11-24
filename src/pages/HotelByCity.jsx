@@ -18,8 +18,6 @@ import Header from "../Header";
 import useFetch from "../hooks/useFetch";
 import SearchItem from "../components/SearchItem";
 import Footer from "../components/Footer";
-import { check } from "prettier";
-
 
 
 const HotelByCity = () => {
