@@ -13,13 +13,13 @@ const Room = ({ room }) => {
         <article className="w-96 h-96 p-10">
             <div className="">
                 <img src={images?.[0]} alt="single room" />
-                <div className="price-top">
+                <div className="flex gap-2">
                     <h6>${price}</h6>
                     <p>per night</p>
                 </div>
-                <Link to={`/rooms/${slug}`} className="btn-primary room-link">
+                {/* <Link to={`/single-room/${slug}`} className="btn-primary room-link">
                     features
-                </Link>
+                </Link> */}
             </div>
             <p className="room-info">{name}</p>
         </article>

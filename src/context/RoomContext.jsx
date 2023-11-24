@@ -16,7 +16,7 @@ export function RoomsContextProvider({ children }) {
         //
         type: "all",
         capacity: 1,
-        price: 0,
+        price: 400,
         minPrice: 0,
         maxPrice: 500,
         minSize: 0,
@@ -40,7 +40,7 @@ export function RoomsContextProvider({ children }) {
         });
         return tempItems;
     }
-    const getRoom = slug => {
+    const getRoom = (slug) => {
         let tempRooms = [...state.rooms];
         const room = tempRooms.find(room => room.slug === slug);
         return room;

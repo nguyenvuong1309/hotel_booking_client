@@ -8,6 +8,7 @@ export default function IndexPage() {
     const [places, setPlaces] = useState([]);
     useEffect(() => {
         axios.get('/places').then(response => {
+            console.log("🚀 ~ file: IndexPage.jsx:11 ~ axios.get ~ response:", response)
             setPlaces(response.data);
         });
     }, [])
@@ -27,7 +28,14 @@ export default function IndexPage() {
                     <Link key={place._id} to={'/place/' + place._id} className="w-50 h-50">
                         <div className="h-50 h-50 mb-2 bg-gray-500 rounded-2xl flex">
                             {place.photos?.[0] && (
-                                <img className="rounded-2xl object-cover aspect-square" src={import.meta.env.VITE_BASE_URL + '/uploads/' + place.photos?.[0]} alt="" />
+                                <div className=" w-[246px] h-[247px] ">
+                                    <img className="rounded-2xl object-cover aspect-square"
+                                        src={
+                                            import.meta.env.VITE_BASE_URL + '/uploads/' + place.photos?.[0]
+                                            //place.photos?.[0]
+                                        }
+                                        alt="" />
+                                </div>
                             )}
                         </div>
                         <div>

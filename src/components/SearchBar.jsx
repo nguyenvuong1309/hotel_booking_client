@@ -11,12 +11,13 @@ import {
     faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import { LanguageContext } from "../context/LanguageContext";
 
 
 export default function SearchBar() {
@@ -46,6 +47,7 @@ export default function SearchBar() {
         })
     }
 
+    const { language, setLanguage } = useContext(LanguageContext);
     return (
         <>
             <div className="flex">
@@ -93,9 +95,24 @@ export default function SearchBar() {
                         )} */}
                     </div>
                     <div className="flex gap-2 headerSearchItem">
-                        <div onClick={() => setOpenOption(!openOption)}>
+                        <div onClick={() => setOpenOption(!openOption)} className="flex gap-x-2">
                             <FontAwesomeIcon icon={faPerson} className="mt-1" />
-                            <span className="headerSearchText">{` ${options.adult} adult . ${options.children} children . ${options.room} room`}</span>
+                            <span className="flex">
+                                {`${options.adult}`} {<div>&nbsp; </div>}
+                                {language === "english" && (<div>  adults </div>)}
+                                {language === "vietnam" && (<div> người lớn </div>)}
+                                {language === "chinese" && (<div> 大人 </div>)}
+
+                                {`. ${options.children}`} {<div>&nbsp; </div>}
+                                {language === "english" && (<div> children </div>)}
+                                {language === "vietnam" && (<div> trẻ em </div>)}
+                                {language === "chinese" && (<div> 孩子们 </div>)}
+
+                                {`. ${options.room}`} {<div>&nbsp; </div>}
+                                {language === "english" && (<div> rooms </div>)}
+                                {language === "vietnam" && (<div> phòng </div>)}
+                                {language === "chinese" && (<div> 房间 </div>)}
+                            </span>
                         </div>
                         {openOption && (<div className="options absolute mt-11 bg-gray-200 w-40 h-40 rounded-lg z-50 shadow-lg">
                             <div className="optionItem flex mt-5 justify-between">
@@ -110,7 +127,7 @@ export default function SearchBar() {
                                 </div>
                             </div>
                             <div className="optionItem mt-5 flex justify-between">
-                                <span className="optionText">Children</span>
+                                <span className="optionText">Adult</span>
                                 <div className="flex gap-4">
                                     <button disabled={options.children <= 1}
                                         className="optionCounterButton w-5 h-5 rounded-lg"

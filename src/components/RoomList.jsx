@@ -5,6 +5,7 @@
 
 import React from "react";
 import Room from "./Room";
+import { Link } from "react-router-dom";
 const RoomsList = ({ rooms }) => {
     if (rooms === "undefined" || !rooms || rooms === null || rooms.length === 0) {
         return (
@@ -17,7 +18,11 @@ const RoomsList = ({ rooms }) => {
         <section className="">
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {rooms.map(item => {
-                    return <Room key={item.id} room={item} />;
+                    return (
+                        <Link to={`/single-room/${item?.slug}`}>
+                            <Room key={item.id} room={item} />;
+                        </Link>
+                    )
                 })}
             </div>
         </section>

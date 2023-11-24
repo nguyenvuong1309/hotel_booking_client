@@ -168,7 +168,7 @@ const HotelList = () => {
                         ) : (
                             <>
                                 {data.map((item) => (
-                                    <div className="" key={item._id}>
+                                    <div className="my-2" key={item._id}>
                                         <SearchItem item={item} key={item._id} />
                                     </div>
                                 ))}

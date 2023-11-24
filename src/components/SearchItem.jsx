@@ -4,21 +4,35 @@ import { Link } from "react-router-dom";
 
 const SearchItem = ({ item }) => {
     return (
-        <div className="flex items-center border-2 border-black border-solid bg-cover ml-10 mr-40 h-52 rounded-2xl">
+        <div className="flex items-center border border-solid bg-cover ml-10 mr-40 h-52">
 
-            <img src={item.photos[0]} alt="" className="h-40 w-40 items-center m-4" />
+            <div className="w-80 h-40 flex items-center m-2 justify-center">
+                <img src={item.photos[0]} alt="" className="items-center" />
+            </div>
             <div className="grid ml-4 ">
                 <h1 className=" text-cyan-400 font-bold text-xl">{item.name}</h1>
-                <span className="">{item.distance}m from center</span>
+                <span className="">{item.distance} m from center</span>
                 <span className="bg-emerald-600 w-32 rounded-2xl flex items-center justify-center">Free airport taxi</span>
                 <span className="font-bold">
-                    Studio Apartment with Air conditioning
+                    Studio Apartment with {item.aircondition === true ? "Air conditioning" : "no Air conditioning"}
                 </span>
                 <span className="">{item.desc}</span>
-                <span className="font-bold text-green-500">Free cancellation </span>
-                <span className="text-green-500">
-                    You can cancel later, so lock in this great price today!
-                </span>
+                <div>
+                    {
+                        item.freecancellation === true ? (
+                            <>
+                                <span className="font-bold text-green-500">Free cancellation </span>
+                                <span className="text-green-500">
+                                    You can cancel later, so lock in this great price today!
+                                </span>
+                            </>
+                        ) : (
+                            <div>
+                                No free cancellation
+                            </div>
+                        )
+                    }
+                </div>
 
             </div>
             <div className="grid m-4">
@@ -27,7 +41,7 @@ const SearchItem = ({ item }) => {
                     <button>{item.rating}</button>
                 </div>}
                 <div className="grid">
-                    <span className="flex justify-end font-bold text-2xl">${item.cheapestPrice}</span>
+                    <span className="flex justify-end font-bold text-2xl">${item.price}</span>
                     <span className="flex justify-end py-4">Includes taxes and fees</span>
                     <div className="flex justify-end">
                         <Link to={`/hotels/${item._id}`}>

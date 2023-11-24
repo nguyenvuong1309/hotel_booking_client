@@ -7,6 +7,7 @@ import { UserContext } from "./context/UserContext";
 
 
 export default function BookingWidget({ place }) {
+    console.log("🚀 ~ file: BookingWidget.jsx:10 ~ BookingWidget ~ place:", place)
     const [checkIn, setCheckIn] = useState('');
     const [checkOut, setCheckOut] = useState('');
     const [numberOfGuests, setNumberOfGuests] = useState(1);
@@ -26,12 +27,14 @@ export default function BookingWidget({ place }) {
     async function bookThisPlace() {
         const data = {
             checkIn, checkOut, numberOfGuests,
-            name, phone, place: place._id,
-            price: numberOfNights * place.price,
+            name, phone, hotelRoom: place?._id,
+            price: numberOfNights * place?.fields?.price,
         }
-        const response = await axios.post('/bookings', data);
-        const bookingId = response.data._id;
-        setRedirect(`/account/bookings/${bookingId}`);
+        // const response = await axios.post('/bookings', data);
+        // const bookingId = response.data._id;
+        // setRedirect(`/account/bookings/${bookingId}`);
+
+        const response = await axios.post('/hotemRoomBooking', data);
     }
 
     if (redirect) {
@@ -82,7 +85,7 @@ export default function BookingWidget({ place }) {
                 Book this place
                 {numberOfNights > 0 && (
                     <>
-                        <span> ${numberOfNights * place.price}</span>
+                        <span> ${numberOfNights * place?.fields?.price}</span>
                     </>
                 )}
             </button>

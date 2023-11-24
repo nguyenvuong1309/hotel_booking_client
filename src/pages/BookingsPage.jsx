@@ -10,9 +10,14 @@ import BookingDate from "../BookingDate";
 
 export default function BookingsPage() {
     const [bookings, setBookings] = useState([]);
+    const [bookingRoom, setBookingRoom] = useState([]);
     useEffect(() => {
         axios.get('/bookings').then(response => {
             setBookings(response.data);
+        });
+        axios.get('/hotelRoomBooking').then(response => {
+            // console.log("🚀 ~ file: BookingsPage.jsx:18 ~ axios.get ~ response:", response.data)
+            setBookingRoom(response.data);
         });
     }, [])
     return (
@@ -39,6 +44,14 @@ export default function BookingsPage() {
                             </div>
                         </div>
                     </Link>
+                ))}
+            </div>
+            <div>
+                {bookingRoom?.length > 0 && bookingRoom.map(item => (
+                    <div className="flex justify-center items-center h-40">
+                        check in : {item.checkIn}
+                        check out : {item.checkOut}
+                    </div>
                 ))}
             </div>
         </div >

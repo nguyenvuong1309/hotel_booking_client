@@ -15,11 +15,9 @@ const Header = () => {
     const state = useLocation();
     const pathname = state.pathname.split('/')[2];
     const [onPage, setOnPage] = useState("");
-    console.log("🚀 ~ file: header.jsx:18 ~ Header ~ onPage:", onPage == "buy")
     useEffect(() => {
         setOnPage(pathname);
     }, [])
-    console.log("🚀 ~ file: header.jsx:15 ~ Header ~ state:", state)
     return (
         <div>
             <div className="flex items-center  justify-around">
