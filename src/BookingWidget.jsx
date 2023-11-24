@@ -34,7 +34,14 @@ export default function BookingWidget({ place }) {
         // const bookingId = response.data._id;
         // setRedirect(`/account/bookings/${bookingId}`);
 
-        const response = await axios.post('/hotemRoomBooking', data);
+        const response = await axios.post('/hotemRoomBooking',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            },
+            data);
     }
 
     if (redirect) {

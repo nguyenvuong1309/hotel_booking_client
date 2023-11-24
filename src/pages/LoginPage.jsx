@@ -21,12 +21,13 @@ export default function LoginPage() {
             // const data = await axios.post('/login', { email, password });
             // setUser(data.data)
             // setRedirect(true)
-            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
-                method: 'POST',
-                body: JSON.stringify({ email, password }),
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-            });
+            const response =
+                await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                })
             if (response.ok) {
                 response.json().then(userInfo => {
                     setUser(userInfo);

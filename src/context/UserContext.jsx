@@ -11,7 +11,14 @@ export function UserContextProvider({ children }) {
     const [ready, setReady] = useState(false);
     useEffect(() => {
         if (!user) {
-            axios.get('/profile').then(({ data }) => {
+            axios.get('/profile',
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                },
+            ).then(({ data }) => {
                 setUser(data)
                 setReady(true)
             })

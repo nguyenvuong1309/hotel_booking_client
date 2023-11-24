@@ -7,7 +7,12 @@ import Featured from "./../components/Feature";
 export default function IndexPage() {
     const [places, setPlaces] = useState([]);
     useEffect(() => {
-        axios.get('/places').then(response => {
+        axios.get('/places', {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },).then(response => {
             console.log("🚀 ~ file: IndexPage.jsx:11 ~ axios.get ~ response:", response)
             setPlaces(response.data);
         });
