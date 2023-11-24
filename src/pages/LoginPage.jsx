@@ -21,22 +21,29 @@ export default function LoginPage() {
             // const data = await axios.post('/login', { email, password });
             // setUser(data.data)
             // setRedirect(true)
-            const response =
-                await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
-                    method: 'POST',
-                    body: JSON.stringify({ email, password }),
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include',
-                })
-            if (response.ok) {
-                response.json().then(userInfo => {
-                    setUser(userInfo);
+            await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
+                method: 'POST',
+                body: JSON.stringify({ email, password }),
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+            }).then(response => response.json()).then(result => {
+                console.log("🚀 ~ file: LoginPage.jsx:30 ~ handleLoginSubmit ~ result:", result)
+                if (result?.token) {
+                    localStorage.setItem('token', result.token)
+                    //setUser(userInfo);
                     setRedirect(true);
-                })
-                toast.success("Login sucess");
-            } else {
-                toast.error("Wrong credentials");
-            }
+                    toast.success("Login sucess");
+                }
+            })
+            // if (response) {
+            //     response.json().then(userInfo => {
+            //         setUser(userInfo);
+            //         setRedirect(true);
+            //     })
+            //     toast.success("Login sucess");
+            // } else {
+            //     toast.error("Wrong credentials");
+            // }
         }
         catch (e) {
             console.log(e)
