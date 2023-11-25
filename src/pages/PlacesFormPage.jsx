@@ -25,7 +25,12 @@ export default function PlacesFormPage() {
         if (!id) {
             return;
         }
-        axios.get('/places/' + id).then(response => {
+        axios.get('/places/' + id, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },).then(response => {
             const { data } = response;
             setTitle(data.title);
             setAddress(data.address);
@@ -78,7 +83,12 @@ export default function PlacesFormPage() {
                 checkIn, checkOut, maxGuests,
                 price
             };
-            await axios.post('/places', { placeData });
+            await axios.post('/places', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }, { placeData });
             setRedirect(true);
         }
     }

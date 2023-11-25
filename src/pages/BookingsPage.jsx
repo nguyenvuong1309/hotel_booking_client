@@ -12,10 +12,20 @@ export default function BookingsPage() {
     const [bookings, setBookings] = useState([]);
     const [bookingRoom, setBookingRoom] = useState([]);
     useEffect(() => {
-        axios.get('/bookings').then(response => {
+        axios.get('/bookings', {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },).then(response => {
             setBookings(response.data);
         });
-        axios.get('/hotelRoomBooking').then(response => {
+        axios.get('/hotelRoomBooking', {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },).then(response => {
             // console.log("🚀 ~ file: BookingsPage.jsx:18 ~ axios.get ~ response:", response.data)
             setBookingRoom(response.data);
         });

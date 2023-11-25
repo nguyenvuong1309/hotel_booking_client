@@ -18,7 +18,12 @@ const BookingRoomForm = () => {
         if (!slug) {
             return;
         }
-        axios.get(`/rooms/${slug}`).then(response => {
+        axios.get(`/rooms/${slug}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },).then(response => {
             setPlace(response.data);
         });
     }, [slug])

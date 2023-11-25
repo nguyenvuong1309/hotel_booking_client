@@ -7,7 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfilePage({ user, setUser }) {
     async function logout() {
-        await axios.post("/logout");
+        await axios.post("/logout", {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },);
+        localStorage.removeItem('token');
         toast.success("Logout success");
         setUser(null);
         setRedirect('/');

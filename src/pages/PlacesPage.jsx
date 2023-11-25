@@ -14,6 +14,11 @@ export default function PlacesPage() {
         //     setPlaces(data);
         // })
         fetch(`${import.meta.env.VITE_BASE_URL}/user-places`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }, {
             credentials: 'include'
         })
             .then(response => {

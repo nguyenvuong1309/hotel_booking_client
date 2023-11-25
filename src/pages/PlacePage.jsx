@@ -19,10 +19,20 @@ export default function PlacePage() {
         if (!id) {
             return;
         }
-        axios.get(`/places/${id}`).then(response => {
+        axios.get(`/places/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },).then(response => {
             setPlace(response.data);
         });
-        axios.get(`${import.meta.env.VITE_BASE_URL}/rooms`).then((data) => {
+        axios.get(`${import.meta.env.VITE_BASE_URL}/rooms`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },).then((data) => {
             setRoom(data.data)
             // console.log("🚀 ~ file: PlacePage.jsx:27 ~ axios.get ~ data:", data.data)
         })

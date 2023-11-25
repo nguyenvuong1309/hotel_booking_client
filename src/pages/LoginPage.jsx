@@ -21,20 +21,28 @@ export default function LoginPage() {
             // const data = await axios.post('/login', { email, password });
             // setUser(data.data)
             // setRedirect(true)
-            await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
-                method: 'POST',
-                body: JSON.stringify({ email, password }),
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-            }).then(response => response.json()).then(result => {
-                console.log("🚀 ~ file: LoginPage.jsx:30 ~ handleLoginSubmit ~ result:", result)
-                if (result?.token) {
-                    localStorage.setItem('token', result.token)
-                    //setUser(userInfo);
-                    setRedirect(true);
-                    toast.success("Login sucess");
+            await fetch(`${import.meta.env.VITE_BASE_URL}/login`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        //  Authorization: 'Bearer ' + localStorage.getItem('token')
+                    },
+                    credentials: 'include',
+                }).then(response => response.json()).then(result => {
+                    console.log("🚀 ~ file: LoginPage.jsx:30 ~ handleLoginSubmit ~ result:", result)
+                    if (result?.token) {
+                        localStorage.setItem('token', result.token)
+                        setUser(result.userInfo);
+                        setRedirect(true);
+                        toast.success("Login sucess");
+                    }
+                    else {
+                        toast.error("Wrong credentials");
+                    }
                 }
-            })
+                )
             // if (response) {
             //     response.json().then(userInfo => {
             //         setUser(userInfo);

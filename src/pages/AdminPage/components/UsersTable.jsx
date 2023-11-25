@@ -29,7 +29,12 @@ const UsersTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("/users");
+        const res = await axios.get("/users", {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          }
+        },);
         setData(res.data);
       } catch (err) {
         console.log("🚀 ~ file: UsersTable.jsx:17 ~ fetchData ~ err:", err)

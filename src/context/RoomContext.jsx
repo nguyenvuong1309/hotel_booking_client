@@ -110,7 +110,12 @@ export function RoomsContextProvider({ children }) {
     const [ready, setReady] = useState(false);
     useEffect(() => {
         if (!rooms) {
-            axios.get('/rooms').then(({ data }) => {
+            axios.get('/rooms', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            },).then(({ data }) => {
                 const ROOMS = formatData(data);
                 setRooms(ROOMS)
                 setReady(true)

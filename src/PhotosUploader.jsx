@@ -24,7 +24,12 @@ export default function PhotosUploader({ addedPhotos, on_Change }) {
     }
     async function addPhotoByLink(ev) {
         ev.preventDefault();
-        const { data: filename } = await axios.post('/upload-by-link', { link: photoLink });
+        const { data: filename } = await axios.post('/upload-by-link', { link: photoLink }, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        },);
         on_Change(prev => {
             return [...prev, filename]
         })
