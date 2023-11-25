@@ -28,7 +28,6 @@ const BuyPage = () => {
             tokenContract: import.meta.env.VITE_NFT_COLLECTION_ADDRESS,
             tokenId: nftCollection?.metadata?.id,
         });
-    console.log("🚀 ~ file: AnNFTPage.jsx:43 ~ AnNFTPage ~ directListing:", directListing)
 
 
 
@@ -39,7 +38,6 @@ const BuyPage = () => {
     //         tokenContract: import.meta.env.VITE_NFT_COLLECTION_ADDRESS,
     //         tokenId: nft?.metadata?.id,
     //     });
-    // console.log("🚀 ~ file: AnNFTPage.jsx:53 ~ AnNFTPage ~ auctionListing:", auctionListing)
 
     const buyListing = async () => {
         let txResult;
@@ -52,7 +50,6 @@ const BuyPage = () => {
                 directListing[0].id,
                 1
             );
-            console.log("🚀 ~ file: AnNFTPage.jsx:74 ~ buyListing ~ txResult:", txResult)
         } else {
             throw new Error("No listing found");
         }

@@ -14,9 +14,10 @@ import BookingRoomForm from "../components/BookingRoomForm";
 
 //import StyledHero from "../components/StyledHero";
 const SingleRoom = () => {
-    const { slug } = useParams();
+    const { id } = useParams();
     const { context } = useContext(RoomContext);
-    const room = context.getRoom(slug);
+    console.log("🚀 ~ file: SingleRoom.jsx:19 ~ SingleRoom ~ context:", context)
+    const room = context.getRoom(id);
 
     if (!room) {
         return (

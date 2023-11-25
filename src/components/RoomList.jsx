@@ -19,8 +19,8 @@ const RoomsList = ({ rooms }) => {
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {rooms.map(item => {
                     return (
-                        <Link to={`/single-room/${item?.slug}`}>
-                            <Room key={item.id} room={item} />;
+                        <Link to={`/single-room/${item?.id}`}>
+                            <Room key={item.id} room={item} />
                         </Link>
                     )
                 })}

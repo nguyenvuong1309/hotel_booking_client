@@ -131,7 +131,6 @@ const UsersTable = () => {
               <td className="px-6 py-4">
 
                 <div onClick={() => handleOnClick(user._id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</div>
-                {/* <div onClick={() => console.log(user._id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</div> */}
                 {navigateToEditUser && <Navigate to={"/admin/edit-user"} state={{ id: userId }} />}
               </td>
             </tr>

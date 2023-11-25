@@ -16,6 +16,7 @@ import PlacePage from './pages/PlacePage';
 import BookingsPage from './pages/BookingsPage';
 import BookingPage from './pages/BookingPage';
 import BusesBooking from './pages/BusesBookingPage/BusesBooking';
+import DetailBusesBooking from './pages/BusesBookingPage/DetailBusesBoking';
 import HotelList from '../src/pages/HotelList'
 import AdminPage from './pages/AdminPage/AdminPage';
 import { DarkModeContextProvider } from './pages/AdminPage/context/darkModeContext';
@@ -64,9 +65,10 @@ function App() {
                 <Route path="/account/bookings" element={<BookingsPage />} />
                 <Route path="/account/bookings/:id" element={<BookingPage />} />
                 <Route path="/Rooms" element={<RoomsPage />} />
-                <Route path="/single-room/:slug" element={<SingleRoom />} />
+                <Route path="/single-room/:id" element={<SingleRoom />} />
               </Route>
               <Route path="/booking-car" element={<BusesBooking />} />
+              <Route path="/detail-booking-car" element={<DetailBusesBooking />} />
 
               <Route path="/hotels" element={<HotelList />} />
               <Route path="/hotels/:city" element={<HotelByCity />} />
@@ -76,6 +78,9 @@ function App() {
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/admin/users" element={<Users />} />
               <Route path="/admin/edit-user" element={<EditUser />} />
+
+
+
               <Route path="/nft-market-place" element={<NftMarketPlace />} />
               <Route path="/nft-market-place/mint-NFT" element={<MintNFTPage />} />
               <Route path="/nft-market-place/:id" element={<AnNFTPage />} />

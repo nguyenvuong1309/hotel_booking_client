@@ -26,7 +26,6 @@ export default function BookingsPage() {
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         },).then(response => {
-            // console.log("🚀 ~ file: BookingsPage.jsx:18 ~ axios.get ~ response:", response.data)
             setBookingRoom(response.data);
         });
     }, [])
@@ -56,11 +55,27 @@ export default function BookingsPage() {
                     </Link>
                 ))}
             </div>
-            <div>
+            <div className="mt-10">
                 {bookingRoom?.length > 0 && bookingRoom.map(item => (
-                    <div className="flex justify-center items-center h-40">
-                        check in : {item.checkIn}
-                        check out : {item.checkOut}
+                    <div className="flex justify-center items-center h-fit mb-10" key={item?._id}>
+                        <div className="w-10/12 bg-slate-100 flex">
+                            <div className="w-4/12">
+                                <img src={item?.hotelRoom?.fields?.images?.[0]?.fields?.file?.url} alt="w-full" />
+                            </div>
+                            <div className="ml-10 grid justify-around items-center">
+                                <div className="font-extralight text-xl">
+                                    {item?.hotelRoom?.fields?.slug}
+                                </div>
+                                <div className="gap-1 text-xl flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+                                    </svg>
+                                    <span className="text-2xl">
+                                        Total price : ${item?.price}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

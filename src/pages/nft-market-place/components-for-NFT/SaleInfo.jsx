@@ -39,12 +39,10 @@ const SaleInfo = () => {
 
 
     const { data: hasApproval, isLoading_ } = useContractRead(contract, "isApprovedForAll", [nft?.owner, import.meta.env.VITE_MARKETPLACE_ADDRESS])
-    console.log("🚀 ~ file: SaleInfo.jsx:42 ~ SaleInfo ~ hasApproval:", hasApproval)
 
 
 
     async function checkAndProvideApproval() {
-        console.log('in')
         // const hasApproval = await nftCollection?.call(
         //     "isApprovedForAll",
         //     [nft.owner,
@@ -52,7 +50,6 @@ const SaleInfo = () => {
         //     ]);
 
         // var data = await contract.ERC721.IsApprovedForAll(nft?.owner, import.meta.env.VITE_MARKETPLACE_ADDRESS);
-        // console.log("🚀 ~ file: SaleInfo.jsx:46 ~ checkAndProvideApproval ~ data:", data)
         if (!hasApproval) {
             const txResult = await nftCollection?.call(
                 "setApprovalForAll",
@@ -88,15 +85,7 @@ const SaleInfo = () => {
 
     async function handleSubmissionDirect() {
         await checkAndProvideApproval();
-        // console.log({
-        //     assetContractAddress: assetContractAddress,
-        //     tokenId: tokenId,
-        //     pricePerToken: pricePerToken,
-        //     startTimestamp: startTimestamp,
-        //     endTimestamp: endTimestamp,
-        // });
 
-        console.log(tokenId);
         const txResult = await createDirectListing({
             assetContractAddress: "0x4E53De7465B85BAe0B10b05D7944833502e08F1f",
             tokenId: 1,
@@ -112,7 +101,6 @@ const SaleInfo = () => {
 
         return txResult;
     }
-    console.log('tolenid', tokenId)
 
     return (
         <div>
@@ -155,7 +143,6 @@ const SaleInfo = () => {
                                 await handleSubmissionDirect();
                             }}
                             onSuccess={(txResult) => {
-                                console.log("🚀 ~ file: SaleInfo.jsx:124 ~ SaleInfo ~ txResult:", txResult)
                                 // router.push(`/token/${import.]NFT_COLLECTION_ADDRESS}/${nft.metadata.id}`);
                             }}
                         >Create Direct Listing</Web3Button> */}

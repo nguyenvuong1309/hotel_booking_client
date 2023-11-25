@@ -11,7 +11,6 @@ const contractAddress = "0x4E53De7465B85BAe0B10b05D7944833502e08F1f"
 const asset_contract_address = "0x4E53De7465B85BAe0B10b05D7944833502e08F1f"
 
 function ButtonCreateDirectListing({ tokenId }) {
-    console.log("🚀 ~ file: ButtonCreateDirectListing.jsx:13 ~ ButtonCreateDirectListing ~ tokenId:", tokenId)
     const { contract } = useContract(contractAddress, "marketplace-v3");
     const {
         mutateAsync: createDirectListing,

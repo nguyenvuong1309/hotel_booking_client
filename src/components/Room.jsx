@@ -10,16 +10,13 @@ import { memo } from "react";
 const Room = ({ room }) => {
     const { name, slug, images, price } = room;
     return (
-        <article className="w-96 h-96 p-10">
+        <article className="w-full p-10">
             <div className="">
                 <img src={images?.[0]} alt="single room" />
                 <div className="flex gap-2">
                     <h6>${price}</h6>
                     <p>per night</p>
                 </div>
-                {/* <Link to={`/single-room/${slug}`} className="btn-primary room-link">
-                    features
-                </Link> */}
             </div>
             <p className="room-info">{name}</p>
         </article>

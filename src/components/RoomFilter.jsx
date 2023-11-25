@@ -14,7 +14,6 @@ const RoomsFilter = ({ rooms }) => {
 
     // react hooks
     const context = useContext(RoomContext);
-    //   console.log("🚀 ~ file: RoomFilter.jsx:17 ~ RoomsFilter ~ context:", context.context)
     const {
         handleChange,
         type,
@@ -27,18 +26,6 @@ const RoomsFilter = ({ rooms }) => {
         breakfast,
         pets
     } = context.context;
-    // console.log("🚀 ~ file: RoomFilter.jsx:29 ~ RoomsFilter ~ {handleChange,type,capacity,price,minPrice,maxPrice,minSize,maxSize,breakfast,pets}:", {
-    //     handleChange,
-    //     type,
-    //     capacity,
-    //     price,
-    //     minPrice,
-    //     maxPrice,
-    //     minSize,
-    //     maxSize,
-    //     breakfast,
-    //     pets
-    // })
 
     // get unique types
     let types = getUnique(rooms, "type");

@@ -16,8 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ThirdwebProvider
         activeChain="fantom-testnet"
         // signer={new ethers.providers.Web3Provider(window.ethereum).getSigner()}
-        clientId="2797b3f9d95ffff77be7cb8dfc5abb26"
-      >
+        clientId="2797b3f9d95ffff77be7cb8dfc5abb26">
         <App />
       </ThirdwebProvider>
     </BrowserRouter>

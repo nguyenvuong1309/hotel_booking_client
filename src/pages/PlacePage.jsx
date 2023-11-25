@@ -34,12 +34,10 @@ export default function PlacePage() {
             }
         },).then((data) => {
             setRoom(data.data)
-            // console.log("🚀 ~ file: PlacePage.jsx:27 ~ axios.get ~ data:", data.data)
         })
     }, [id])
     if (!place) return '';
     let temp = room?.filter((item) => item?.fields?.hotelId === id)
-    console.log("🚀 ~ file: PlacePage.jsx:32 ~ PlacePage ~ temp:", temp)
 
     if (temp?.length > 4) {
         temp = temp.slice(0, 4)

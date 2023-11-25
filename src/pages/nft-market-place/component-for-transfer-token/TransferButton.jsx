@@ -12,12 +12,10 @@ const TransferButton = ({ tokenAddress, receiver, amount, message }) => {
     const {
         contract: tokenContract
     } = useContract(tokenAddress, 'token');
-    console.log("🚀 ~ file: TransferButton.jsx:12 ~ TransferButton ~ tokenContract:", tokenContract)
 
     const {
         contract: transferContract
     } = useContract(import.meta.env.VITE_SMART_CONTRACT_TRANSFER_TOKEN_ADDRESS);
-    console.log("🚀 ~ file: TransferButton.jsx:17 ~ TransferButton ~ transferContract:", transferContract)
 
 
     return (

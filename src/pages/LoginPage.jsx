@@ -31,7 +31,6 @@ export default function LoginPage() {
                     },
                     credentials: 'include',
                 }).then(response => response.json()).then(result => {
-                    console.log("🚀 ~ file: LoginPage.jsx:30 ~ handleLoginSubmit ~ result:", result)
                     if (result?.token) {
                         localStorage.setItem('token', result.token)
                         setUser(result.userInfo);

@@ -18,7 +18,6 @@ const AnNFTPage = () => {
     // const [isLoading, setIsLoading] = useState(null);
     const { contract } = useContract(import.meta.env.VITE_NFT_COLLECTION_ADDRESS);
     const { data: nft, isLoading, error } = useNFT(contract, tokenId);
-    console.log("🚀 ~ file: AnNFTPage.jsx:21 ~ AnNFTPage ~ nft:", nft)
     const [contractMetaData, setContractMetaData] = useState(null);
     useEffect(() => {
         const getData = async () => {
@@ -45,7 +44,6 @@ const AnNFTPage = () => {
             tokenContract: import.meta.env.VITE_NFT_COLLECTION_ADDRESS,
             tokenId: nft?.metadata?.id,
         });
-    console.log("🚀 ~ file: AnNFTPage.jsx:43 ~ AnNFTPage ~ directListing:", directListing)
 
 
 
@@ -54,8 +52,6 @@ const AnNFTPage = () => {
             tokenContract: import.meta.env.VITE_NFT_COLLECTION_ADDRESS,
             tokenId: nft?.metadata?.id,
         });
-    console.log("🚀 ~ file: AnNFTPage.jsx:53 ~ AnNFTPage ~ auctionListing:", auctionListing)
-    // console.log("🚀 ~ file: AnNFTPage.jsx:53 ~ AnNFTPage ~ isLoading:", isLoading)
 
     const buyListing = async () => {
         let txResult;
@@ -68,7 +64,6 @@ const AnNFTPage = () => {
                 directListing[0].id,
                 1
             );
-            console.log("🚀 ~ file: AnNFTPage.jsx:74 ~ buyListing ~ txResult:", txResult)
         } else {
             throw new Error("No listing found");
         }

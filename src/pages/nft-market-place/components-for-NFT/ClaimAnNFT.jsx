@@ -13,7 +13,6 @@ const ClaimAnNFT = () => {
         const quantity = 1; // how many unique NFTs you want to claim
 
         const tx = await contract.erc721.claim(quantity);
-        console.log("🚀 ~ file: ClaimAnNFT.jsx:9 ~ ClaimNFT ~ tx:", tx)
         const receipt = tx.receipt; // the transaction receipt
         const claimedTokenId = tx.id; // the id of the NFT claimed
         const claimedNFT = await tx.data(); // (optional) get the claimed NFT metadata

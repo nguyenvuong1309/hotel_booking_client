@@ -25,7 +25,6 @@ const TransferTokenPage = () => {
         data: verifiedTokens,
         isLoading: isVerifiedTokensLoading,
     } = useContractRead(contract, "getVerifiedTokens");
-    console.log("🚀 ~ file: TransferTokenPage.jsx:22 ~ TransferTokenPage ~ verifiedTokens:", verifiedTokens)
     const [selectedToken, setSelectedToken] = useState('');
 
 

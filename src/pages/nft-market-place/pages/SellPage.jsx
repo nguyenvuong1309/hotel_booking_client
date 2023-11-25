@@ -13,7 +13,6 @@ const SellPage = () => {
     const { contract } = useContract(import.meta.env.VITE_NFT_COLLECTION_ADDRESS);
     const address = useAddress();
     const { data, isLoading } = useOwnedNFTs(contract, address);
-    console.log("🚀 ~ file: SellPage.jsx:15 ~ SellPage ~ data:", data)
     return (
         <div className="mb-96">
             <div className="mt-5">

@@ -14,12 +14,9 @@ export default function NftMarketPlace() {
 
     const { contract } = useContract(contractAddress);
     const ownerAddress = useAddress();
-    console.log("🚀 ~ file: NftMarketPlace.jsx:17 ~ NftMarketPlace ~ address:", ownerAddress)
 
     const { data: nfts, isLoading, error } = useNFTs(contract);
-    console.log("🚀 ~ file: NftMarketPlace.jsx:20 ~ NftMarketPlace ~ nfts:", nfts)
 
-    console.log("🚀 ~ file: NftMarketPlace.jsx:20 ~ NftMarketPlace ~ nfts:", nfts)
     const { data: contractName } = useContractRead(contract, 'name')
 
 

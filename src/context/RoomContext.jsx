@@ -32,7 +32,7 @@ export function RoomsContextProvider({ children }) {
 
     const formatData = (items) => {
         let tempItems = items.map(item => {
-            let id = item.sys.id;
+            let id = item?._id;
             let images = item.fields.images.map(image => image.fields.file.url);
 
             let room = { ...item.fields, images, id };
@@ -40,9 +40,9 @@ export function RoomsContextProvider({ children }) {
         });
         return tempItems;
     }
-    const getRoom = (slug) => {
+    const getRoom = (id) => {
         let tempRooms = [...state.rooms];
-        const room = tempRooms.find(room => room.slug === slug);
+        const room = tempRooms.find(room => room.id === id);
         return room;
     };
     const filterRooms = () => {
@@ -101,9 +101,6 @@ export function RoomsContextProvider({ children }) {
                 [name]: value,
             }
         );
-
-        //console.log(state)
-
     };
 
     const [rooms, setRooms] = useState(null)
@@ -127,6 +124,7 @@ export function RoomsContextProvider({ children }) {
             })
         }
     }, [])
+    console.log(state.rooms)
     return (
         <RoomContext.Provider value={{ rooms, setRooms, ready, setReady, context: { ...state, handleChange, getRoom } }}>
             {children}

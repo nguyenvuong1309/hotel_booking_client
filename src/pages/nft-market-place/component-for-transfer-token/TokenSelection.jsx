@@ -16,7 +16,6 @@ const TokenSelection = ({ tokenAddress, isSelected }) => {
         data: tokenMetadata,
         isLoading: isTokenMetadataLoading,
     } = useContractMetadata(contract);
-    console.log("🚀 ~ file: TokenSelection.jsx:19 ~ TokenSelection ~ tokenMetadata:", tokenMetadata)
 
     let coinBorderColor = "";
 
