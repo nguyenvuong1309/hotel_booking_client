@@ -14,6 +14,7 @@ const BuyPage = () => {
 
     const { contract } = useContract(import.meta.env.VITE_NFT_COLLECTION_ADDRESS);
     const { data: nfts, isLoading, error } = useNFTs(contract);
+    console.log("🚀 ~ file: BuyPage.jsx:17 ~ BuyPage ~ nfts:", nfts)
 
     const { contract: marketplace, isLoading: loadingMarketplace } =
         useContract(
