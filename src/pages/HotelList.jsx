@@ -325,6 +325,7 @@ const HotelList = () => {
                 </div>
 
                 {/* List hotels */}
+
                 <div className="sm:w-3/5 mt-10">
                     {loading ? (
                         "loading"

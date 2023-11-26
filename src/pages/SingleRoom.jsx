@@ -16,7 +16,6 @@ import BookingRoomForm from "../components/BookingRoomForm";
 const SingleRoom = () => {
     const { id } = useParams();
     const { context } = useContext(RoomContext);
-    console.log("🚀 ~ file: SingleRoom.jsx:19 ~ SingleRoom ~ context:", context)
     const room = context.getRoom(id);
 
     if (!room) {

@@ -34,6 +34,7 @@ import { RoomsContextProvider } from './context/RoomContext';
 import SingleRoom from './pages/SingleRoom';
 import HotelByCity from './pages/HotelByCity';
 import DetailHotelPage from './pages/DetailHotelPage';
+import AddTheNewRoomByHotel from './pages/HotelPage/AddTheNewRoomByHotel';
 
 
 
@@ -65,6 +66,7 @@ function App() {
                 <Route path="/account/bookings" element={<BookingsPage />} />
                 <Route path="/account/bookings/:id" element={<BookingPage />} />
                 <Route path="/Rooms" element={<RoomsPage />} />
+                <Route path="/room/add-the-new-room/:hotelId" element={<AddTheNewRoomByHotel />} />
                 <Route path="/single-room/:id" element={<SingleRoom />} />
               </Route>
               <Route path="/booking-car" element={<BusesBooking />} />

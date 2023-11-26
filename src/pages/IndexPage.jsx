@@ -13,6 +13,7 @@ export default function IndexPage() {
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         },).then(response => {
+            console.log("🚀 ~ file: IndexPage.jsx:16 ~ useEffect ~ response:", response)
             setPlaces(response.data);
         });
     }, [])
@@ -65,7 +66,8 @@ export default function IndexPage() {
                                 {place.photos?.[0] && (
                                     <img
                                         className="rounded-xl object-cover aspect-square w-[300px] bg-slate-400"
-                                        src={import.meta.env.VITE_BASE_URL + '/uploads/' + place.photos?.[0]}
+                                        //src={import.meta.env.VITE_BASE_URL + '/uploads/' + place.photos?.[0]}
+                                        src={place.photos?.[0]}
                                         alt="" />
                                 )}
                             </div>

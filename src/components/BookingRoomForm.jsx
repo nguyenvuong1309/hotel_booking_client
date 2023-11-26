@@ -12,7 +12,6 @@ import Comments from "./CommentSection/Comments";
 const BookingRoomForm = () => {
 
     const { id } = useParams();
-    console.log("🚀 ~ file: BookingRoomForm.jsx:15 ~ BookingRoomForm ~ id:", id)
     // const id = "6547bdbdca69c1b64dc6371f";
     const [hotel, setHotel] = useState(null);
     useEffect(() => {

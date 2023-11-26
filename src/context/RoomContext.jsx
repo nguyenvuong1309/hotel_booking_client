@@ -33,7 +33,7 @@ export function RoomsContextProvider({ children }) {
     const formatData = (items) => {
         let tempItems = items.map(item => {
             let id = item?._id;
-            let images = item.fields.images.map(image => image.fields.file.url);
+            let images = item?.fields?.images?.map(image => image?.fields?.file?.url);
 
             let room = { ...item.fields, images, id };
             return room;
@@ -124,7 +124,6 @@ export function RoomsContextProvider({ children }) {
             })
         }
     }, [])
-    console.log(state.rooms)
     return (
         <RoomContext.Provider value={{ rooms, setRooms, ready, setReady, context: { ...state, handleChange, getRoom } }}>
             {children}
