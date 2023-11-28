@@ -60,50 +60,54 @@ const Comments = ({ currentPlaceId }) => {
         });
     }, [loadComments]);
     return (
-        <div className="">
-            <h3 className="">Comments</h3>
-            <div className="comment-container">
-                {comments.length > 0 && comments.map(comment => (
-                    <div key={comment._id}>
-                        {PlaceId.id == comment.placeId ? (
-                            <div key={comment?._id} className="mb-10 mt-10">
-                                <div className="flex gap-2 items-center">
-                                    <div className="bg-slate-600 w-10 h-10 flex justify-center items-center rounded-full">
-                                        <div>
-                                            <svg className="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                            </svg>
+        <div className="w-full">
+            <div className="">
+                <h3 className="">Comments</h3>
+                <div className="comment-container">
+                    {comments.length > 0 && comments.map(comment => (
+                        <div key={comment._id}>
+                            {PlaceId.id == comment.placeId ? (
+                                <div key={comment?._id} className="mb-10 mt-10">
+                                    <div className="flex gap-2 items-center">
+                                        <div className="bg-slate-600 w-10 h-10 flex justify-center items-center rounded-full">
+                                            <div>
+                                                <svg className="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div className="text-xl font-bold">
+                                            {comment?.commenter}
+                                        </div>
+                                        <div className="mt-0 text-sm font-light">
+                                            {moment(moment?.createdAt).format("dddd, MMM DD at HH:mm a")}
                                         </div>
                                     </div>
-                                    <div className="text-xl font-bold">
-                                        {comment?.commenter}
-                                    </div>
-                                    <div className="mt-0 text-sm font-light">
-                                        {moment(moment?.createdAt).format("dddd, MMM DD at HH:mm a")}
+                                    <div>
+                                        {comment?.message}
                                     </div>
                                 </div>
-                                <div>
-                                    {comment?.message}
-                                </div>
-                            </div>
-                        ) : (
-                            <div></div>
-                        )
-                        }
-                    </div>
-                ))}
-            </div>
-            <div>
-                Write your comment
-            </div>
-            <div className="flex bg-zinc-400 w-50 rounded-lg h-10 items-center gap-5 justify-start">
-                <input className="h-5 w-96 ml-10 rounded-lg"
-                    value={message}
-                    onChange={ev => setMessage(ev.target.value)}
-                />
-                <button className="w-14 rounded-lg" onClick={handleCreateComment}>
-                    send
-                </button>
+                            ) : (
+                                <div></div>
+                            )
+                            }
+                        </div>
+                    ))}
+                </div>
+
+
+                <div>
+                    Write your comment
+                </div>
+                <div className="flex bg-zinc-400 w-full rounded-lg h-10 items-center gap-5 justify-start">
+                    <input className="h-5 w-10/12 ml-10 rounded-lg"
+                        value={message}
+                        onChange={ev => setMessage(ev.target.value)}
+                    />
+                    <button className="w-14 rounded-lg" onClick={handleCreateComment}>
+                        send
+                    </button>
+                </div>
             </div>
         </div>
     )

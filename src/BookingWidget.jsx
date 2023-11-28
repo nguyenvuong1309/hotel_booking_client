@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faSackDollar
 } from "@fortawesome/free-solid-svg-icons";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 export default function BookingWidget({ hotel }) {
@@ -27,26 +30,31 @@ export default function BookingWidget({ hotel }) {
     }, [user])
 
     async function bookThisPlace() {
-        const data = {
-            checkIn, checkOut, numberOfGuests,
-            name, phone, hotelRoom: hotel?._id,
-            price: numberOfNights * hotel?.fields?.price,
+        if (localStorage.getItem('token')) {
+            const data = {
+                checkIn, checkOut, numberOfGuests,
+                name, phone, hotelRoom: hotel?._id,
+                price: numberOfNights * hotel?.fields?.price,
+            }
+            // const response = await axios.post('/bookings', data);
+            let headers = {
+                headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + localStorage.getItem('token') }
+            };
+            const response = await axios.post('/hotemRoomBooking',
+                data,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                },
+            );
+            const bookingId = response.data._id;
+            setRedirect(`/account/bookings/${bookingId}`);
+        } else {
+            setRedirect(`/login`)
+            toast.error("You need to login to book hotel");
         }
-        // const response = await axios.post('/bookings', data);
-        let headers = {
-            headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + localStorage.getItem('token') }
-        };
-        const response = await axios.post('/hotemRoomBooking',
-            data,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
-                }
-            },
-        );
-        const bookingId = response.data._id;
-        setRedirect(`/account/bookings/${bookingId}`);
     }
 
     if (redirect) {

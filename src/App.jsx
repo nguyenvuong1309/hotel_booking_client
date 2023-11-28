@@ -40,9 +40,6 @@ import AddTheNewRoomByHotel from './pages/HotelPage/AddTheNewRoomByHotel';
 
 
 
-// https://www.youtube.com/watch?v=MpQbwtSiZ7E&t=13572s
-
-
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL//'http://localhost:4000'
 axios.defaults.withCredentials = true;
 

@@ -12,7 +12,7 @@ const Featured = () => {
     );
 
     return (
-        <div className="flex gap-10 flex-wrap w-full justify-center">
+        <div className="flex gap-10 flex-wrap w-11/12 justify-center">
             {loading ? (
                 "Loading please wait"
             ) : (

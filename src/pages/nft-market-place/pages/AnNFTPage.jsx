@@ -18,13 +18,13 @@ const AnNFTPage = () => {
     // const [isLoading, setIsLoading] = useState(null);
     const { contract } = useContract(import.meta.env.VITE_NFT_COLLECTION_ADDRESS);
     const { data: nft, isLoading, error } = useNFT(contract, tokenId);
+    console.log("🚀 ~ file: AnNFTPage.jsx:21 ~ AnNFTPage ~ nft:", nft)
     const [contractMetaData, setContractMetaData] = useState(null);
     useEffect(() => {
         const getData = async () => {
 
             const data = await contract?.metadata?.get();
             setContractMetaData(data);
-
         }
         getData();
     }, [state?.id])

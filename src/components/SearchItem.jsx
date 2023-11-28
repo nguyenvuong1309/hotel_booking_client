@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 
 const SearchItem = ({ item }) => {
     return (
-        <div className="flex items-center border border-solid bg-cover ml-10 mr-40 h-52">
+        <div className="flex items-center border border-solid bg-cover w-full mb-10 shadow-slate-950 bg-slate-300
+        max-[500px]:grid
+        ">
 
-            <div className="w-80 h-40 flex items-center m-2 justify-center">
-                <img src={item.photos[0]} alt="" className="items-center" />
+            <div className=" flex items-center p-1 justify-center
+            max-[500px]:w-full
+            ">
+                <img src={item.photos[0]} alt="" className="flex items-center justify-center object-cover  w-[900px] h-[180px] " />
             </div>
+
             <div className="grid ml-4 ">
                 <h1 className=" text-cyan-400 font-bold text-xl">{item.name}</h1>
                 <span className="">{item.distance} m from center</span>
@@ -35,6 +40,7 @@ const SearchItem = ({ item }) => {
                 </div>
 
             </div>
+
             <div className="grid m-4">
                 {item.rating && <div className="">
                     <span>Excellent</span>
@@ -50,7 +56,9 @@ const SearchItem = ({ item }) => {
                     </div>
                 </div>
             </div>
-        </div>
+
+
+        </div >
     );
 };
 

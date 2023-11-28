@@ -22,7 +22,6 @@ const NFTItem = ({ nft }) => {
             tokenContract: import.meta.env.VITE_NFT_COLLECTION_ADDRESS,
             tokenId: nft?.metadata?.id,
         });
-
     return (
         <div >
             <Link to={nameId == "sell" ? (`/nft-market-place/SaleInfo/${nft?.metadata?.id}`) : `/nft-market-place/${nft?.metadata?.id}`} state={{ id: nft?.metadata?.id }} className="grid bg-slate-300 rounded-xl justify-center" key={nft?.metadata?.id} >

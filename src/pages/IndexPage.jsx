@@ -54,12 +54,16 @@ export default function IndexPage() {
         //         ))}
         //     </div>
         // </div>
-        <div>
-            <div className="max-w-7xl mx-auto">
-                <Featured />
+        <div className="flex justify-center">
+            <div className="w-11/12">
+                <div className="flex justify-center">
+                    <Featured />
+                </div>
                 <div className="text-2xl font-bold my-6 ml-10">Browse by property</div>
-                <PropertyList />
-                <div className="mt-10 grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-2">
+                <div className="flex justify-center">
+                    <PropertyList />
+                </div>
+                <div className="mt-10 grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-2">
                     {places.length > 0 && places.map(place => (
                         <Link key={place._id} to={'/place/' + place._id} className="w-50 h-50">
                             <div className="h-50 h-50 mb-2 flex ">
