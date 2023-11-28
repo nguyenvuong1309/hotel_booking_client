@@ -60,9 +60,9 @@ const Comments = ({ currentPlaceId }) => {
         });
     }, [loadComments]);
     return (
-        <div className="w-full">
+        <div className="w-full py-10">
             <div className="">
-                <h3 className="">Comments</h3>
+                <h3 className="mb-10">Comments</h3>
                 <div className="comment-container">
                     {comments.length > 0 && comments.map(comment => (
                         <div key={comment._id}>
@@ -89,8 +89,7 @@ const Comments = ({ currentPlaceId }) => {
                                 </div>
                             ) : (
                                 <div></div>
-                            )
-                            }
+                            )}
                         </div>
                     ))}
                 </div>

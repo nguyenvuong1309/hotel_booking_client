@@ -41,7 +41,6 @@ const CreateDirectListing = () => {
     }
 
     const create = async () => {
-        console.log("click")
         if (contract) {
             const txResult = await contract.directListings.createListing({
                 assetContractAddress: "0x39798cAF83acCCACcC8b9BBC6158859E1330904D", // Required - smart contract address of NFT to sell
@@ -53,7 +52,6 @@ const CreateDirectListing = () => {
                 // startTimestamp: new Date(), // Optional - when the listing should start (default is now)
                 // endTimestamp: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Optional - when the listing should end (default is 7 days from now)
             });
-            console.log("🚀 ~ file: CreateDirectingList.jsx:55 ~ create ~ txResult:", txResult)
         }
     }
     return (

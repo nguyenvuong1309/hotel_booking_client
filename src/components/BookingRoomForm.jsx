@@ -30,7 +30,7 @@ const BookingRoomForm = () => {
     if (!hotel) return '';
 
     return (
-        <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
+        <div className="mt-4 bg-gray-100  px-8 pt-8">
             <h1 className="text-3xl">{hotel?.title}</h1>
             {/* <AddressLink children={hotel?.address} />
             <PlaceGallery hotel={hotel} /> */}

@@ -7,7 +7,6 @@ import { useContract, useUnclaimedNFTs } from "@thirdweb-dev/react";
 const DisplayAllNotClaimedNFT = () => {
     const { contract, isLoading_contract } = useContract("0x39798cAF83acCCACcC8b9BBC6158859E1330904D");
     const { data: unclaimedNfts, isLoading, error } = useUnclaimedNFTs(contract, { start: 0, count: 100 });
-    console.log("🚀 ~ file: DisplayAllNotClaimedNFT.jsx:10 ~ DisplayAllNotClaimedNFT ~ unclaimedNfts:", unclaimedNfts)
     return (
         <>
             <div className="w-1/5 m-5 bg-slate-500 rounded-xl">

@@ -38,7 +38,6 @@ export default function PlacePage() {
     }, [id])
     if (!place) return '';
     let temp = room?.filter((item) => item?.fields?.hotelId === id)
-    console.log("🚀 ~ file: PlacePage.jsx:41 ~ PlacePage ~ temp:", temp)
 
     if (temp?.length > 4) {
         temp = temp.slice(0, 4)
@@ -59,10 +58,12 @@ export default function PlacePage() {
 
 
                 <div className="flex justify-center gap-10">
-                    <div className="w-9/12 flex justify-between 
+                    <div className="w-11/12 flex justify-between 
                 max-[400px]:grid
                 ">
-                        <div className="">
+                        <div className="
+                        max-[500px]:w-full
+                        ">
                             <div className="flex mt-10">
                                 <div className="w-full border border-slate-400">
                                     <div className="font-bold m-4">Hightlights</div>
@@ -158,6 +159,7 @@ export default function PlacePage() {
                                 </div>
                             </div>
                         </div>
+
                         <div className="w-3/12 border border-slate-400 mt-10
                     max-[400px]:w-full
                     ">

@@ -97,7 +97,6 @@ const AddTheNewRoomByHotel = () => {
                 }
             }
         )
-        console.log(hotelRoom);
     }
 
     return (

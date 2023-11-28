@@ -30,7 +30,6 @@ export default function PlacesFormPage() {
         if (!id) {
             return;
         }
-        console.log("🚀 ~ file: PlacesFormPage.jsx:31 ~ useEffect ~ id:", id)
         axios.get('/places/' + id, {
             headers: {
                 'Content-Type': 'application/json',

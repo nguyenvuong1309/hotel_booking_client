@@ -13,7 +13,6 @@ export default function IndexPage() {
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         },).then(response => {
-            console.log("🚀 ~ file: IndexPage.jsx:16 ~ useEffect ~ response:", response)
             setPlaces(response.data);
         });
     }, [])

@@ -33,7 +33,11 @@ export default function AccountPage() {
         <div>
             <AccountNav />
             {subpage === 'profile' && (
-                <ProfilePage user={user} setUser={setUser} />
+                <div className="flex justify-center">
+                    <div className="w-11/12">
+                        <ProfilePage user={user} setUser={setUser} />
+                    </div>
+                </div>
             )}
             {subpage === 'places' && (
                 <div className="">
