@@ -5,6 +5,7 @@ import axios from "axios";
 import PlacesPage from "./PlacesPage.jsx";
 import AccountNav from "../AccountNav.jsx";
 import ProfilePage from "./ProfilePage.jsx";
+import Header from "../Header.jsx";
 
 
 
@@ -31,19 +32,21 @@ export default function AccountPage() {
 
     return (
         <div>
-            <AccountNav />
-            {subpage === 'profile' && (
-                <div className="flex justify-center">
-                    <div className="w-11/12">
-                        <ProfilePage user={user} setUser={setUser} />
+            <div>
+                <AccountNav />
+                {subpage === 'profile' && (
+                    <div className="flex justify-center">
+                        <div className="w-11/12">
+                            <ProfilePage user={user} setUser={setUser} />
+                        </div>
                     </div>
-                </div>
-            )}
-            {subpage === 'places' && (
-                <div className="">
-                    <PlacesPage />
-                </div>
-            )}
+                )}
+                {subpage === 'places' && (
+                    <div className="">
+                        <PlacesPage />
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

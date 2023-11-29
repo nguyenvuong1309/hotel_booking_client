@@ -35,6 +35,8 @@ import SingleRoom from './pages/SingleRoom';
 import HotelByCity from './pages/HotelByCity';
 import DetailHotelPage from './pages/DetailHotelPage';
 import AddTheNewRoomByHotel from './pages/HotelPage/AddTheNewRoomByHotel';
+import ViewAllRoomByHotel from './pages/ViewAllRoomByHotel';
+import ViewAndEditRoomByHotel from './pages/ViewAndEditRoomByHotel';
 
 
 
@@ -59,6 +61,8 @@ function App() {
                 <Route path="/account/places" element={<PlacesPage />} />
                 <Route path="/account/places/new" element={<PlacesFormPage />} />
                 <Route path="/account/places/:id" element={<PlacesFormPage />} />
+                <Route path="/places/allRoom/:idHotel" element={<ViewAllRoomByHotel />} />
+                <Route path="/places/allRoom/:idHotel/:idHotelRoom" element={<ViewAndEditRoomByHotel />} />
                 <Route path="/place/:id" element={<PlacePage />} />
                 <Route path="/account/bookings" element={<BookingsPage />} />
                 <Route path="/account/bookings/:id" element={<BookingPage />} />
@@ -69,6 +73,8 @@ function App() {
               <Route path="/booking-car" element={<BusesBooking />} />
               <Route path="/detail-booking-car" element={<DetailBusesBooking />} />
 
+
+              {/* Route hotel */}
               <Route path="/hotels" element={<HotelList />} />
               <Route path="/hotels/:city" element={<HotelByCity />} />
               <Route path="/hotels/:city/:hoteName" element={<DetailHotelPage />} />

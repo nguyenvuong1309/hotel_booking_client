@@ -96,7 +96,13 @@ const SingleRoom = () => {
                         <div className="font-bold">
                             booking form
                         </div>
-                        <BookingRoomForm />
+                        {room && room?.numberOfRemainRoom > 0 ? (
+                            <BookingRoomForm />
+                        ) : (
+                            <div className="flex justify-center text-xl bg-slate-200">
+                                Sorry but we don't have this type of room available
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -188,6 +188,18 @@ export default function PlacesFormPage() {
                             )
                         }
                     </div>
+                    <div>
+                        {
+                            id && (
+                                <div>
+                                    {preInput("All Room", "balalalaalalalal")}
+                                    <Link to={`/places/allRoom/${id}`} className="text-blue-600 underline underline-offset-4">
+                                        Click here to view all the room
+                                    </Link>
+                                </div>
+                            )
+                        }
+                    </div>
                     <button className="primary my-4">Save</button>
                 </form>
             </div>

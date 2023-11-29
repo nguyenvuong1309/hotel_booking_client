@@ -12,13 +12,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-export default function BookingWidget({ hotel }) {
+export default function BookingWidget(data) {
+    const hotel = data?.data?.hotel;
+    const [hotelRoom, setHotelRoom] = useState({ ...data?.data?.hotelRoom })
+
     const [checkIn, setCheckIn] = useState('');
     const [checkOut, setCheckOut] = useState('');
     const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [redirect, setRedirect] = useState('');
+
     const { user } = useContext(UserContext);
     let numberOfNights = 0;
     if (checkIn && checkOut) {
@@ -33,13 +37,12 @@ export default function BookingWidget({ hotel }) {
         if (localStorage.getItem('token')) {
             const data = {
                 checkIn, checkOut, numberOfGuests,
-                name, phone, hotelRoom: hotel?._id,
-                price: numberOfNights * hotel?.fields?.price,
+                name, phone, hotelRoom: hotelRoom?._id,
+                price: numberOfNights * hotelRoom?.fields?.price,
+                hotelName: hotel?.title, hotelAddress: hotel?.address,
+                hotelId: hotel?._id
             }
-            // const response = await axios.post('/bookings', data);
-            let headers = {
-                headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + localStorage.getItem('token') }
-            };
+
             const response = await axios.post('/hotemRoomBooking',
                 data,
                 {
@@ -49,11 +52,38 @@ export default function BookingWidget({ hotel }) {
                     }
                 },
             );
+
+
+            const roomUpdateInfo = {
+                sys: {
+                    id: hotelRoom.sys.id
+                },
+                _id: hotelRoom._id,
+                fields: {
+                    breakfast: hotelRoom.fields.breakfast,
+                    description: hotelRoom.fields.description,
+                    extras: hotelRoom.fields.extras,
+                    featured: hotelRoom.fields.featured,
+                    grade: hotelRoom.fields.grade,
+                    hotelId: hotelRoom.fields.hotelId,
+                    images: hotelRoom.fields.images,
+                    name: hotelRoom.fields.name,
+                    numberOfRemainRoom: hotelRoom.fields.numberOfRemainRoom - 1,
+                    pets: hotelRoom.fields.pets,
+                    price: hotelRoom.fields.price,
+                    size: hotelRoom.fields.size,
+                    slug: hotelRoom.fields.slug,
+                    type: hotelRoom.fields.type,
+
+                }
+            }
+            await axios.put(`/rooms/${hotelRoom?._id}`, roomUpdateInfo)
+
             const bookingId = response.data._id;
             setRedirect(`/account/bookings/${bookingId}`);
         } else {
             setRedirect(`/login`)
-            toast.error("You need to login to book hotel");
+            toast.error("You need to login to book hotelRoom");
         }
     }
 
@@ -65,7 +95,7 @@ export default function BookingWidget({ hotel }) {
             <div className="text-2xl">
                 <span className="font-bold text-pink-700">
                     <FontAwesomeIcon icon={faSackDollar} className="text-xl mr-2" />Price:</span>
-                <span className="font-bold">{hotel?.fields?.price}</span> / per night
+                <span className="font-bold">{hotelRoom?.fields?.price}</span> / per night
             </div>
             <div className="border rounded-xl mt-4">
                 <div className="flex flex-wrap">
@@ -108,10 +138,10 @@ export default function BookingWidget({ hotel }) {
                 )}
             </div>
             <button onClick={bookThisPlace} className="primary mt-4">
-                Book this hotel
+                Book this room
                 {numberOfNights > 0 && (
                     <>
-                        <span> ${numberOfNights * hotel?.fields?.price}</span>
+                        <span> ${numberOfNights * hotelRoom?.fields?.price}</span>
                     </>
                 )}
             </button>

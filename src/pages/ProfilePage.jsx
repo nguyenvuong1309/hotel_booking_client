@@ -40,43 +40,11 @@ export default function ProfilePage({ user, setUser }) {
         setUser(userInfo);
     }
     return (
-        <>
-            {/* <div className="text-center max-w-lg mx-auto items-center justify-center">
-                <div className=" flex justify-center gap-10 text-xl">
-                    <div>
-                        <div className="flex">
-                            <div className="flex m-0">Name</div>
-                        </div>
-                        <div className="flex">
-                            <div>Email</div>
-                        </div>
-                        <div className="flex">
-                            <div>Phone number</div>
-                        </div>
-                        <div className="flex">
-                            <div>city</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="flex ">
-                            <div>{user?.name}</div>
-                        </div>
-                        <div className="flex">
-                            <div>{user?.email}</div>
-                        </div>
-                        <div className="flex justify-around">
-                            <div>{ }</div>
-                        </div>
-                        <div className="flex justify-around">
-                            <div>{ }</div>
-                        </div>
-                    </div>
-                </div>
-                <button onClick={logout} className="primary max-w-sn mt-2">Logout</button>
-            </div> */}
-            <div>
+        <div>
+            <div className='w-full'>
                 {user?.isAdmin === true && (<div className='flex justify-center font-bold text-2xl mb-10'>Welcome Admin</div>)}
                 <div>
+
                     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css" />
                     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
 
@@ -137,20 +105,26 @@ export default function ProfilePage({ user, setUser }) {
                                                         {user?.name}
                                                     </>
                                                 ) : (
-                                                    <textarea value={userInfo?.name}
-                                                        onChange={(ev) => { setUserInfo({ ...userInfo, name: ev.target.value }) }}
-                                                    />
+                                                    <>
+                                                        <div className='flex justify-start text-2xl font-thin'>Name</div>
+                                                        <textarea value={userInfo?.name}
+                                                            onChange={(ev) => { setUserInfo({ ...userInfo, name: ev.target.value }) }}
+                                                        />
+                                                    </>
                                                 )}
                                             </h3>
                                             <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                                                <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                                                 {isEditPage === true ? (
                                                     <>
                                                         {/* Los Angeles, California */}
+                                                        <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                                                         {user?.address}
                                                     </>
                                                 ) : (
-                                                    <textarea value={userInfo?.address} />
+                                                    <>
+                                                        <div className='flex justify-start text-2xl font-thin'>Address</div>
+                                                        <textarea value={userInfo?.address} />
+                                                    </>
                                                 )}
                                             </div>
                                             <div className="mb-2 text-blueGray-600 mt-10">
@@ -161,7 +135,10 @@ export default function ProfilePage({ user, setUser }) {
                                                         {user?.work}
                                                     </>
                                                 ) : (
-                                                    <textarea value={userInfo?.work} />
+                                                    <>
+                                                        <div className='flex justify-start text-2xl font-thin'>Work</div>
+                                                        <textarea value={userInfo?.work} />
+                                                    </>
                                                 )}
                                             </div>
                                             <div className="mb-2 text-blueGray-600">
@@ -172,7 +149,10 @@ export default function ProfilePage({ user, setUser }) {
                                                         {user?.education}
                                                     </>
                                                 ) : (
-                                                    <textarea value={userInfo?.education} />
+                                                    <>
+                                                        <div className='flex justify-start text-2xl font-thin'>Education</div>
+                                                        <textarea value={userInfo?.education} />
+                                                    </>
                                                 )}
                                             </div>
                                             <div>
@@ -181,7 +161,10 @@ export default function ProfilePage({ user, setUser }) {
                                                         {user?.Web3AddressWallet}
                                                     </>
                                                 ) : (
-                                                    <textarea value={userInfo?.Web3AddressWallet} />
+                                                    <>
+                                                        <div className='flex justify-start text-2xl font-thin'>Web3AddressWallet</div>
+                                                        <textarea value={userInfo?.Web3AddressWallet} />
+                                                    </>
                                                 )}
                                             </div>
                                         </div>
@@ -198,7 +181,10 @@ export default function ProfilePage({ user, setUser }) {
                                                             {user?.description}
                                                         </p>
                                                     ) : (
-                                                        <textarea value={userInfo?.description} />
+                                                        <>
+                                                            <div className='flex justify-start text-2xl font-thin'>Description</div>
+                                                            <textarea value={userInfo?.description} />
+                                                        </>
                                                     )}
                                                     <div>
                                                         {isEditPage === true ? (
@@ -232,6 +218,6 @@ export default function ProfilePage({ user, setUser }) {
             </div>
             <button onClick={logout} className="primary max-w-sn mt-2">Logout</button>
 
-        </>
+        </div>
     )
 }

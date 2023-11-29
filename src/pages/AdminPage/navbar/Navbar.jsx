@@ -33,6 +33,11 @@ const Navbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                         </svg>
                     </div>
+                    <div>
+                        <Link to={"/"}>
+                            Exit
+                        </Link>
+                    </div>
                     <div className="">
                         <img
                             src="https://haycafe.vn/wp-content/uploads/2022/02/anh-meo-cute-the-luoi-hai-huoc.jpg"

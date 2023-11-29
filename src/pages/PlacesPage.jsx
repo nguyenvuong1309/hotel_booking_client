@@ -10,9 +10,6 @@ import AccountNav from "../AccountNav";
 export default function PlacesPage() {
     const [places, setPlaces] = useState([]);
     useEffect(() => {
-        // axios.get('/user-places').then(({ data }) => {
-        //     setPlaces(data);
-        // })
         fetch(`${import.meta.env.VITE_BASE_URL}/user-places`, {
             headers: {
                 'Content-Type': 'application/json',
