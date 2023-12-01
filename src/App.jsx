@@ -38,6 +38,8 @@ import AddTheNewRoomByHotel from './pages/HotelPage/AddTheNewRoomByHotel';
 import ViewAllRoomByHotel from './pages/ViewAllRoomByHotel';
 import ViewAndEditRoomByHotel from './pages/ViewAndEditRoomByHotel';
 import CreateCarPage from './pages/BusesBookingPage/CreateCarPage';
+import Dashboard from './socket/DashBoard';
+import Form from './socket/Form';
 
 
 
@@ -76,7 +78,9 @@ function App() {
               <Route path="/booking-car" element={<BusesBooking />} />
               <Route path="/detail-booking-car" element={<DetailBusesBooking />} />
 
-
+              <Route path="/chat" element={<Dashboard />} />
+              <Route path='/users/sign_in' element={<Form isSignInPage={true} />} />
+              <Route path='/users/sign_up' element={<Form isSignInPage={false} />} />
 
               {/* Route hotel */}
               <Route path="/hotels" element={<HotelList />} />

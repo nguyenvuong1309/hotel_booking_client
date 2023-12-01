@@ -16,7 +16,7 @@ export default function BookingsPage() {
         axios.get('/bookings', {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
             setBookings(response.data);
@@ -24,7 +24,7 @@ export default function BookingsPage() {
         axios.get('/hotelRoomBooking', {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
             console.log("🚀 ~ file: BookingsPage.jsx:29 ~ useEffect ~ response:", response)

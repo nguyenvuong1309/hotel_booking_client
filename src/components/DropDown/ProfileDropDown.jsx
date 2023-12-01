@@ -20,10 +20,12 @@ const ProfileDropDown = () => {
             await axios.post("/logout", {
                 headers: {
                     'Content-Type': 'application/json',
-                    authorization: 'Bearer ' + localStorage.getItem('token')
+                    authorization: 'Bearer ' + localStorage.getItem('user:token')
                 }
             });
-            localStorage.removeItem('token');
+            localStorage.removeItem('user:token');
+            localStorage.removeItem('user:detail');
+
             toast.success("Logout success");
             setRedirect("/login/")
             setUser("")

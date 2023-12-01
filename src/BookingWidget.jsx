@@ -34,7 +34,7 @@ export default function BookingWidget(data) {
     }, [user])
 
     async function bookThisPlace() {
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem('user:token')) {
             const data = {
                 checkIn, checkOut, numberOfGuests,
                 name, phone, hotelRoom: hotelRoom?._id,
@@ -48,7 +48,7 @@ export default function BookingWidget(data) {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                        Authorization: 'Bearer ' + localStorage.getItem('user:token')
                     }
                 },
             );

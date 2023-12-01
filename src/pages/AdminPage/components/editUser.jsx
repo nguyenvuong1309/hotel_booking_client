@@ -22,7 +22,7 @@ const EditUser = ({ inputs, title }) => {
                 const res = await axios.get(`/users/${id}`, {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                        Authorization: 'Bearer ' + localStorage.getItem('user:token')
                     }
                 },);
                 setData(res.data);

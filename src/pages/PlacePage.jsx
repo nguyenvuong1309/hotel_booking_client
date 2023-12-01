@@ -22,7 +22,7 @@ export default function PlacePage() {
         axios.get(`/places/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
             setPlace(response.data);
@@ -30,7 +30,7 @@ export default function PlacePage() {
         axios.get(`${import.meta.env.VITE_BASE_URL}/rooms`, {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then((data) => {
             setRoom(data.data)

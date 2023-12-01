@@ -13,7 +13,7 @@ export default function PlacesPage() {
         fetch(`${import.meta.env.VITE_BASE_URL}/user-places`, {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         }, {
             credentials: 'include'

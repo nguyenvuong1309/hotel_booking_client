@@ -35,7 +35,7 @@ export default function PlacesFormPage() {
         axios.get('/places/' + id, {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
             const { data } = response;
@@ -88,7 +88,7 @@ export default function PlacesFormPage() {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        authorization: 'Bearer ' + localStorage.getItem('token')
+                        authorization: 'Bearer ' + localStorage.getItem('user:token')
                     }
                 }
             );
@@ -108,7 +108,7 @@ export default function PlacesFormPage() {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        authorization: 'Bearer ' + localStorage.getItem('token')
+                        authorization: 'Bearer ' + localStorage.getItem('user:token')
                     }
                 });
             setRedirect(true);

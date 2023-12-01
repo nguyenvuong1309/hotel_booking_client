@@ -13,10 +13,11 @@ export default function ProfilePage({ user, setUser }) {
         await axios.post("/logout", {
             headers: {
                 'Content-Type': 'application/json',
-                authorization: 'Bearer ' + localStorage.getItem('token')
+                authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },);
-        localStorage.removeItem('token');
+        localStorage.removeItem('user:token');
+        localStorage.removeItem('user:detail');
         toast.success("Logout success");
         setUser(null);
         //  setRedirect('/');
@@ -32,7 +33,7 @@ export default function ProfilePage({ user, setUser }) {
             {
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                    Authorization: 'Bearer ' + localStorage.getItem('user:token')
                 }
             },
         )

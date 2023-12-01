@@ -110,7 +110,7 @@ export function RoomsContextProvider({ children }) {
             axios.get('/rooms', {
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                    Authorization: 'Bearer ' + localStorage.getItem('user:token')
                 }
             },).then(({ data }) => {
                 const ROOMS = formatData(data);

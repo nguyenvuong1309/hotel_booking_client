@@ -32,7 +32,13 @@ export default function LoginPage() {
                     credentials: 'include',
                 }).then(response => response.json()).then(result => {
                     if (result?.token) {
-                        localStorage.setItem('token', result.token)
+                        console.log("🚀 ~ file: LoginPage.jsx:35 ~ handleLoginSubmit ~ result:", result.token)
+                        console.log("🚀 ~ file: LoginPage.jsx:35 ~ handleLoginSubmit ~ result:", result.user)
+
+                        //localStorage.setItem('token', result.token)
+                        localStorage.setItem('user:token', result.token)
+                        localStorage.setItem('user:detail', JSON.stringify(result.user))
+
                         setUser(result.userInfo);
                         setRedirect(true);
                         toast.success("Login sucess");

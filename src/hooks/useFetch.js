@@ -17,7 +17,7 @@ const useFetch = (url) => {
                 const res = await axios.get(url, {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                        Authorization: 'Bearer ' + localStorage.getItem('user:token')
                     }
                 },);
                 setData(res.data);
@@ -35,7 +35,7 @@ const useFetch = (url) => {
             const res = await axios.get(url, {
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                    Authorization: 'Bearer ' + localStorage.getItem('user:token')
                 }
             },);
             setData(res.data);

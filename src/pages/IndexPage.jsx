@@ -10,7 +10,7 @@ export default function IndexPage() {
         axios.get('/places', {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
             setPlaces(response.data);

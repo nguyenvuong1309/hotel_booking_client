@@ -23,7 +23,7 @@ const BookingRoomForm = () => {
         axios.get(`/rooms/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
             console.log("🚀 ~ file: BookingRoomForm.jsx:27 ~ useEffect ~ response:", response)
