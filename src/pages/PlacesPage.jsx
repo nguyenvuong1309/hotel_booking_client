@@ -40,7 +40,7 @@ export default function PlacesPage() {
             </div>
             <div className="flex justify-center">
                 <div className="mt-10 grid  w-10/12">
-                    {places.length > 0 && places.map(place => (
+                    {places && places?.length > 0 && places?.map(place => (
                         <div className="mt-10" key={place._id}>
                             <Link to={'/account/places/' + place._id} className="flex cursor-pointer gap-4 bg-gray-200 p-4 rounded-2xl">
                                 <div className="flex w-32 h-32 bg-gray-300 shrink-0">
@@ -53,7 +53,11 @@ export default function PlacesPage() {
                                 </div>
                                 <div className="grow-0 shrink">
                                     <h2 className="text-xl">{place?.title}</h2>
-                                    <p className="text-sm mt-2">{place?.description}</p>
+                                    <p className="text-sm mt-2">
+                                        <div className="">
+                                            {`${place?.description.substring(0, 200)}  ${place?.description.length > 200 ? '...' : ''}`}
+                                        </div>
+                                    </p>
                                 </div>
                             </Link>
                         </div>

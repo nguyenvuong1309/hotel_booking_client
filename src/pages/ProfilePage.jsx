@@ -13,7 +13,7 @@ export default function ProfilePage({ user, setUser }) {
         await axios.post("/logout", {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('token')
+                authorization: 'Bearer ' + localStorage.getItem('token')
             }
         },);
         localStorage.removeItem('token');
@@ -123,7 +123,9 @@ export default function ProfilePage({ user, setUser }) {
                                                 ) : (
                                                     <>
                                                         <div className='flex justify-start text-2xl font-thin'>Address</div>
-                                                        <textarea value={userInfo?.address} />
+                                                        <textarea value={userInfo?.address}
+                                                            onChange={(ev) => { setUserInfo({ ...userInfo, address: ev.target.value }) }}
+                                                        />
                                                     </>
                                                 )}
                                             </div>
@@ -137,7 +139,7 @@ export default function ProfilePage({ user, setUser }) {
                                                 ) : (
                                                     <>
                                                         <div className='flex justify-start text-2xl font-thin'>Work</div>
-                                                        <textarea value={userInfo?.work} />
+                                                        <textarea value={userInfo?.work} onChange={(ev) => { setUserInfo({ ...userInfo, work: ev.target.value }) }} />
                                                     </>
                                                 )}
                                             </div>
@@ -151,7 +153,7 @@ export default function ProfilePage({ user, setUser }) {
                                                 ) : (
                                                     <>
                                                         <div className='flex justify-start text-2xl font-thin'>Education</div>
-                                                        <textarea value={userInfo?.education} />
+                                                        <textarea value={userInfo?.education} onChange={(ev) => { setUserInfo({ ...userInfo, education: ev.target.value }) }} />
                                                     </>
                                                 )}
                                             </div>
@@ -163,7 +165,7 @@ export default function ProfilePage({ user, setUser }) {
                                                 ) : (
                                                     <>
                                                         <div className='flex justify-start text-2xl font-thin'>Web3AddressWallet</div>
-                                                        <textarea value={userInfo?.Web3AddressWallet} />
+                                                        <textarea value={userInfo?.Web3AddressWallet} onChange={(ev) => { setUserInfo({ ...userInfo, Web3AddressWallet: ev.target.value }) }} />
                                                     </>
                                                 )}
                                             </div>
@@ -183,7 +185,7 @@ export default function ProfilePage({ user, setUser }) {
                                                     ) : (
                                                         <>
                                                             <div className='flex justify-start text-2xl font-thin'>Description</div>
-                                                            <textarea value={userInfo?.description} />
+                                                            <textarea value={userInfo?.description} onChange={(ev) => { setUserInfo({ ...userInfo, description: ev.target.value }) }} />
                                                         </>
                                                     )}
                                                     <div>

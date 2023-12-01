@@ -3,7 +3,7 @@
 
 
 
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
@@ -154,7 +154,9 @@ const HotelList = () => {
                         <>
                             {data.map((item) => (
                                 <div className="mb-4">
-                                    <SearchItem item={item} key={item._id} />
+                                    <Link to={`/place/${item._id}`}>
+                                        <SearchItem item={item} key={item._id} />
+                                    </Link>
                                 </div>
                             ))}
                         </>

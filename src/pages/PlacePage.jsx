@@ -163,6 +163,9 @@ export default function PlacePage() {
                         <div className="w-3/12 border border-slate-400 mt-10
                     max-[400px]:w-full
                     ">
+                            <a href={'https://maps.google.com/?q=' + place?.title} target="_blank" >
+                                <img src={"https://cdn6.agoda.net/images/MAPS-1214/default/property-map-entry-1.svg?s=1024x"} alt="" />
+                            </a>
                             <div className="flex items-center justify-center font-bold text-2xl m-10">
                                 {place?.grade} Excellent
                             </div>

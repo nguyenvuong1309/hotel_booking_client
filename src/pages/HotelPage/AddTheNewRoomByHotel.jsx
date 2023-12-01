@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 
 
@@ -25,6 +25,8 @@ const AddTheNewRoomByHotel = () => {
 
     const [images, setImages] = useState([]);
     const [textImage, setTextImage] = useState("");
+
+    const [redirect, setRedirect] = useState("");
 
     const addTextInExtraInformation = () => {
         setExtra([...extra, text])
@@ -88,7 +90,7 @@ const AddTheNewRoomByHotel = () => {
                 ]
             }
         }
-        axios.post('/rooms',
+        await axios.post('/rooms',
             { hotelRoom: hotelRoom },
             {
                 headers: {
@@ -97,8 +99,13 @@ const AddTheNewRoomByHotel = () => {
                 }
             }
         )
+        setRedirect(`/places/allRoom/${hotelId}`);
     }
 
+
+    if (redirect) {
+        return <Navigate to={redirect} />
+    }
     return (
         <div className="flex justify-center item-center">
             <div className="w-11/12">

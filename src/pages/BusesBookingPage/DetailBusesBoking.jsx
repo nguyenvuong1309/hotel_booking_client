@@ -6,7 +6,7 @@
 import Header from "./Component/Header";
 import Footer from "../../components/Footer";
 import MyGallery from "./Component/MyGallery";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import {
     faBus,
@@ -15,117 +15,110 @@ import {
     faHourglassEnd
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UserContext } from "../../context/UserContext";
+import { ca } from "date-fns/locale";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Navigate } from "react-router-dom";
+
 
 function DetailBusesBooking() {
-    const [bookings, setBookings] = useState([]);
+    const [cars, setCars] = useState(null);
+    const { user } = useContext(UserContext);
+    const [redirect, setRedirect] = useState('');
+
     useEffect(() => {
-        axios.get('/booking-car/show').then(response => {
-            setBookings(response.data);
+        axios.get('/cars').then((response) => {
+            setCars(response.data);
         });
     }, [])
+
+    const bookCar = async (car) => {
+        console.log("🚀 ~ file: DetailBusesBoking.jsx:31 ~ bookCar ~ car:", car)
+        if (user?._id) {
+            if (car.numberRemain > 0) {
+                const data = {
+                    userId: user._id,
+                    carId: car._id,
+                    from: car.from,
+                    to: car.to,
+                    departureTime: car.departureTime,
+                    estimatedTimeOfArrival: car.estimatedTimeOfArrival,
+                    price: car.price,
+                    images: car.images
+                }
+                await axios.post('/createBookingCar', data);
+
+                const infoUpdateCar = {
+                    name: car.name,
+                    from: car.from,
+                    to: car.to,
+                    departureTime: car.departureTime,
+                    estimatedTimeOfArrival: car.estimatedTimeOfArrival,
+                    numberRemain: car.numberRemain - 1,
+                    price: car.price,
+                    images: car.images,
+                    description: car.description
+                }
+                await axios.put(`/cars/${car._id}`, infoUpdateCar);
+            }
+            else {
+                toast.error("Sorry but this car now don't have seat available");
+            }
+        } else {
+            toast.error("You need to login to book car");
+            setRedirect(`/login`)
+            return <Navigate to={'/'} />
+        }
+    }
+    if (redirect) {
+        return <Navigate to={redirect} />
+    }
     return (
         <>
             <Header />
-            <div className="max-w-7xl mx-auto">
-                {/* Where to go */}
-                <div className="px-2">
-                    <div className="my-10 font-bold text-2xl">
-                        Best Options
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-6">
-                        {/* Card */}
-                        <div
-                            className="w-full sm:w-2/5 flex flex-wrap gap-2 p-5 rounded-lg shadow-sm hover:shadow-md duration-300 "
-                            style={{
-                                borderWidth: '1px',
-                                height: 'fit-content'
-                            }}>
-                            {/* Hinh */}
-                            <div className="w-full xl:w-2/5 flex flex-wrap justify-between gap-1">
-                                <MyGallery />
+            <div className="flex justify-center">
+                <div className="w-11/12 grid grid-cols-[1fr_1fr_1fr_1fr]
+                max-[500px]:grid
+                max-[500px]:grid-cols-1
+                ">
+                    {cars && cars.map((item) => (
+                        <div className="m-5    bg-slate-300">
+                            <div className="flex justify-center items-center">
+                                <div className="m-2">
+                                    {console.log(item?.images?.[0])}
+                                    <img src={item?.images?.[0]} alt="" />
+                                </div>
                             </div>
-                            {/* Thong tin */}
-                            <div className="w-full xl:w-auto">
-                                <p className="font-bold text-lg sm:text-2xl text-pink-500"><FontAwesomeIcon icon={faBus} className="text-lg, text-black sm:text-xl" /> PHƯƠNG TRANG</p>
-                                <p className="my-2 font-bold text-sm sm:text-xl"><FontAwesomeIcon icon={faRoute} className="text-lg sm:text-xl" /><span className="text-green-500"> Hà Nội</span> → <span className="text-red-500"> Hạ Long</span></p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassStart} className="text-lg sm:text-xl" /> Xuất phát: 2 AM</p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassEnd} className="text-lg sm:text-xl" /> Thời gian dự kiến: 5 AM</p>
-                                <p className="font-bold"><span className="text-gray-500 line-through text-sm sm:text-xl">1.000.000đ</span> <span className="text-red-500  text-xl sm:text-xl"> 200.000đ</span></p>
-                                <div className="text-center">
-                                    <button className="mt-8 px-8 py-4 rounded-lg bg-red-500 text-white font-bold hover:bg-red-700 duration-150">Đặt Ngay</button>
+                            <div className="ml-4">
+                                <div>
+                                    {`Name : ${item?.name}`}
+                                </div>
+                                <div>
+                                    {`From : ${item?.from}`}
+                                </div>
+                                <div>
+                                    {`To : ${item?.to}`}
+                                </div>
+                                <div>
+                                    {`Price : ${item?.price}`}
+                                </div>
+                                <div>
+                                    {`Number seat remain : ${item?.numberRemain}`}
+                                </div>
+                            </div>
+                            <div className="flex justify-center">
+                                <div className="bg-red-500 w-3/12 rounded-xl flex justify-center my-4">
+                                    <button className=" bg-red-500" onClick={(ev) => { bookCar(item) }}>
+                                        Book
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div
-                            className="w-full sm:w-2/5 flex flex-wrap gap-2 p-5 rounded-lg shadow-sm hover:shadow-md duration-300 "
-                            style={{
-                                borderWidth: '1px',
-                                height: 'fit-content'
-                            }}>
-                            {/* Hinh */}
-                            <div className="w-full xl:w-2/5 flex flex-wrap justify-between gap-1">
-                                <MyGallery />
-                            </div>
-                            {/* Thong tin */}
-                            <div className="w-full xl:w-auto">
-                                <p className="font-bold text-lg sm:text-2xl text-pink-500"><FontAwesomeIcon icon={faBus} className="text-lg, text-black sm:text-xl" /> PHƯƠNG TRANG</p>
-                                <p className="my-2 font-bold text-sm sm:text-xl"><FontAwesomeIcon icon={faRoute} className="text-lg sm:text-xl" /><span className="text-green-500"> Hà Nội</span> → <span className="text-red-500"> Hạ Long</span></p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassStart} className="text-lg sm:text-xl" /> Xuất phát: 2 AM</p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassEnd} className="text-lg sm:text-xl" /> Thời gian dự kiến: 5 AM</p>
-                                <p className="font-bold"><span className="text-gray-500 line-through text-sm sm:text-xl">1.000.000đ</span> <span className="text-red-500  text-xl sm:text-xl"> 200.000đ</span></p>
-                                <div className="text-center">
-                                    <button className="mt-8 px-8 py-4 rounded-lg bg-red-500 text-white font-bold hover:bg-red-700 duration-150">Đặt Ngay</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="w-full sm:w-2/5 flex flex-wrap gap-2 p-5 rounded-lg shadow-sm hover:shadow-md duration-300 "
-                            style={{
-                                borderWidth: '1px',
-                                height: 'fit-content'
-                            }}>
-                            {/* Hinh */}
-                            <div className="w-full xl:w-2/5 flex flex-wrap justify-between gap-1">
-                                <MyGallery />
-                            </div>
-                            {/* Thong tin */}
-                            <div className="w-full xl:w-auto">
-                                <p className="font-bold text-lg sm:text-2xl text-pink-500"><FontAwesomeIcon icon={faBus} className="text-lg, text-black sm:text-xl" /> PHƯƠNG TRANG</p>
-                                <p className="my-2 font-bold text-sm sm:text-xl"><FontAwesomeIcon icon={faRoute} className="text-lg sm:text-xl" /><span className="text-green-500"> Hà Nội</span> → <span className="text-red-500"> Hạ Long</span></p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassStart} className="text-lg sm:text-xl" /> Xuất phát: 2 AM</p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassEnd} className="text-lg sm:text-xl" /> Thời gian dự kiến: 5 AM</p>
-                                <p className="font-bold"><span className="text-gray-500 line-through text-sm sm:text-xl">1.000.000đ</span> <span className="text-red-500  text-xl sm:text-xl"> 200.000đ</span></p>
-                                <div className="text-center">
-                                    <button className="mt-8 px-8 py-4 rounded-lg bg-red-500 text-white font-bold hover:bg-red-700 duration-150">Đặt Ngay</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="w-full sm:w-2/5 flex flex-wrap gap-2 p-5 rounded-lg shadow-sm hover:shadow-md duration-300 "
-                            style={{
-                                borderWidth: '1px',
-                                height: 'fit-content'
-                            }}>
-                            {/* Hinh */}
-                            <div className="w-full xl:w-2/5 flex flex-wrap justify-between gap-1">
-                                <MyGallery />
-                            </div>
-                            {/* Thong tin */}
-                            <div className="w-full xl:w-auto">
-                                <p className="font-bold text-lg sm:text-2xl text-pink-500"><FontAwesomeIcon icon={faBus} className="text-lg, text-black sm:text-xl" /> PHƯƠNG TRANG</p>
-                                <p className="my-2 font-bold text-sm sm:text-xl"><FontAwesomeIcon icon={faRoute} className="text-lg sm:text-xl" /><span className="text-green-500"> Hà Nội</span> → <span className="text-red-500"> Hạ Long</span></p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassStart} className="text-lg sm:text-xl" /> Xuất phát: 2 AM</p>
-                                <p className="my-2 text-sm sm:text-xl"><FontAwesomeIcon icon={faHourglassEnd} className="text-lg sm:text-xl" /> Thời gian dự kiến: 5 AM</p>
-                                <p className="font-bold"><span className="text-gray-500 line-through text-sm sm:text-xl">1.000.000đ</span> <span className="text-red-500  text-xl sm:text-xl"> 200.000đ</span></p>
-                                <div className="text-center">
-                                    <button className="mt-8 px-8 py-4 rounded-lg bg-red-500 text-white font-bold hover:bg-red-700 duration-150">Đặt Ngay</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div >
-            </div >
+                    ))
+                    }
+                </div>
+            </div>
             <Footer />
         </>
 

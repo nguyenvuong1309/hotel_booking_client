@@ -1,17 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import AddressLink from "../AddressLink";
 import PlaceGallery from "../PlaceGallery";
 import BookingDate from "../BookingDate";
+import moment from "moment";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
 
 export default function BookingPage() {
+    const location = useLocation();
+    // console.log("🚀 ~ file: BookingPage.jsx:14 ~ BookingPage ~ location:", location.state.hotelRoomInfo.hotelRoom)
     const { id } = useParams();
     const [booking, setBooking] = useState(null);
-    console.log("🚀 ~ file: BookingPage.jsx:14 ~ BookingPage ~ booking:", booking)
+    const [hotelRoom, setHotelRoom] = useState(null);
+    console.log("🚀 ~ file: BookingPage.jsx:18 ~ BookingPage ~ hotelRoom:", hotelRoom?.fields?.policyCancelBooking)
+    console.log(moment(booking?.checkIn).diff(moment(new Date()), 'days'))
     useEffect(() => {
         if (id) {
             axios.get(`/hotelRoomBooking/${id}`, {
@@ -24,11 +32,22 @@ export default function BookingPage() {
                 if (foundBoking) {
                     setBooking(foundBoking);
                 }
+                setHotelRoom(location?.state?.hotelRoomInfo?.hotelRoom)
             })
         }
     }, [])
     if (!booking) {
         return '';
+    }
+
+    const cancelBooking = async () => {
+        try {
+            await axios.delete(`/hotelRoomBooking/${booking._id}`)
+            toast.success("success cancel booking this hotel")
+        }
+        catch (err) {
+            toast.error("some error occur while you cancel booking this hotel");
+        }
     }
     return (
         <div className="flex justify-center items-center">
@@ -50,6 +69,18 @@ export default function BookingPage() {
 
                     </div>
                     {/* <PlaceGallery place={booking?.hotelId} /> */}
+                    <div className="flex justify-center">
+                        {
+                            moment(booking?.checkIn).diff(moment(new Date()), 'days') > hotelRoom?.fields?.policyCancelBooking ? (
+                                <button className="px-5 py-2 rounded-3xl bg-red-500 font-thin text-white" onClick={cancelBooking}>
+                                    Cancel booking
+                                </button>
+                            ) : (
+                                <div className="flex justify-center bg-red-400 px-4 py-2 rounded-3xl">
+                                    You cannot cancel booking because of hotel policy
+                                </div>
+                            )}
+                    </div>
                 </div>
             </div>
         </div>

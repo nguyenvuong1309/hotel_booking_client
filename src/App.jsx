@@ -37,6 +37,7 @@ import DetailHotelPage from './pages/DetailHotelPage';
 import AddTheNewRoomByHotel from './pages/HotelPage/AddTheNewRoomByHotel';
 import ViewAllRoomByHotel from './pages/ViewAllRoomByHotel';
 import ViewAndEditRoomByHotel from './pages/ViewAndEditRoomByHotel';
+import CreateCarPage from './pages/BusesBookingPage/CreateCarPage';
 
 
 
@@ -69,9 +70,12 @@ function App() {
                 <Route path="/Rooms" element={<RoomsPage />} />
                 <Route path="/room/add-the-new-room/:hotelId" element={<AddTheNewRoomByHotel />} />
                 <Route path="/single-room/:id" element={<SingleRoom />} />
+
+                <Route path="/cars/createCar" element={<CreateCarPage />} />
               </Route>
               <Route path="/booking-car" element={<BusesBooking />} />
               <Route path="/detail-booking-car" element={<DetailBusesBooking />} />
+
 
 
               {/* Route hotel */}

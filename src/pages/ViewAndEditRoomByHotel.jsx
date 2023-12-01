@@ -8,13 +8,12 @@ import { useParams } from "react-router-dom";
 
 const ViewAndEditRoomByHotel = () => {
     const { idHotelRoom } = useParams();
-    console.log("🚀 ~ file: ViewAndEditRoomByHotel.jsx:9 ~ ViewAndEditRoomByHotel ~ idHotelRoom:", idHotelRoom)
     const [room, setRoom] = useState(null);
+    console.log("🚀 ~ file: ViewAndEditRoomByHotel.jsx:13 ~ ViewAndEditRoomByHotel ~ room:", room)
     const [isEditPage, setIsEditPage] = useState(true);
 
     useEffect(() => {
         axios.get(`/rooms/${idHotelRoom}`).then(reponse => {
-            console.log("🚀 ~ file: ViewAndEditRoomByHotel.jsx:15 ~ axios.get ~ reponse:", reponse.data)
             setRoom(reponse.data);
         })
     }, [])
@@ -34,7 +33,28 @@ const ViewAndEditRoomByHotel = () => {
     }
 
     const updateInfoRoom = () => {
-        console.log("in")
+        // const dataRoomUpdate = {
+        //     sys: {
+        //         id: room.sys.id,
+        //     },
+        //     fields: {
+        //         name: room.fields.name,
+        //         hotelId: room.fields.hotelId,
+        //         slug: room.fields.slug,
+        //         type: room.fields.type,
+        //         price: room.fields.price,
+        //         size: room.fields.size,
+        //         capacity: room.fields.capacity,
+        //         pets: room.fields.pets,
+        //         breakfast: room.fields.breakfast,
+        //         featured: room.fields.featured,
+        //         description: room.fields.description,
+        //         extras: room.fields.extras,
+        //         images: room.fields.images,
+        //         policyCancelBooking: room.fields.policyCancelBooking,
+        //         numberOfRemainRoom: room.fields.numberOfRemainRoom,
+        //     }
+        // }
         axios.put(`/rooms/${idHotelRoom}`, room).then(reponse => (
             setIsEditPage(!isEditPage)
         ))
@@ -160,6 +180,27 @@ const ViewAndEditRoomByHotel = () => {
                                             <h6>
                                                 - Number of remain room :
                                                 {room?.fields?.numberOfRemainRoom}
+                                            </h6>
+                                        )}
+                                        {isEditPage ? (
+                                            <div className="flex mt-5">
+                                                <div> - Number of day before check in that you cancel booking : </div>
+                                                <input className="border border-black ml-5" value={room?.fields?.policyCancelBooking || 0}
+                                                    onChange={(ev) => setRoom(
+                                                        {
+                                                            ...room,
+                                                            fields: {
+                                                                ...room.fields,
+                                                                policyCancelBooking: parseInt(ev.target.value, 10)
+                                                            }
+                                                        }
+                                                        // { ...room.fields, numberOfRemainRoom: ev.target.value }
+                                                    )} />
+                                            </div>
+                                        ) : (
+                                            <h6>
+                                                - Number of day before check in that you can cancel booking :
+                                                {room?.fields?.policyCancelBooking}
                                             </h6>
                                         )}
                                         {isEditPage ? (

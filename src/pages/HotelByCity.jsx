@@ -1,15 +1,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -32,7 +23,7 @@ const HotelByCity = () => {
     const [max, setMax] = useState(undefined);
 
     const { data, loading, error, reFetch } = useFetch(
-        `/hotels/Dalat`
+        `/hotels`
     );
     console.log("🚀 ~ file: HotelByCity.jsx:35 ~ HotelByCity ~ data:", data)
     const [checkboxValues, setCheckboxValues] = useState(0);
@@ -56,7 +47,7 @@ const HotelByCity = () => {
                 min-[1160px]:flex
                 ">
                     <div className="
-                    flex justify-center bg-slate-300
+                    flex justify-center bg-slate-300  h-96
                     border border-black shadow-2xl
                     min-[1160px]:w-4/12
                     max-[1160px]:w-full

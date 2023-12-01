@@ -1,12 +1,36 @@
 
 
-import { Fragment } from 'react'
+import { Fragment, useContext, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import LanguageDropDown from './LanguageDropDown'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { NavLink, Navigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 
 const ProfileDropDown = () => {
+    const [redirect, setRedirect] = useState("");
+    const { setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const logout = async () => {
+        if (user) {
+            await axios.post("/logout", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            });
+            localStorage.removeItem('token');
+            toast.success("Logout success");
+            setRedirect("/login/")
+            setUser("")
+        } else {
+            toast.success("You are not log in")
+        }
+    }
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div className='flex items-center justify-center'>
@@ -74,18 +98,21 @@ const ProfileDropDown = () => {
                                 </a>
                             )}
                         </Menu.Item>
-                        <form method="POST" action="#">
+                        <form
+                        //  method="POST" action="#"
+                        >
                             <Menu.Item>
                                 {({ active }) => (
-                                    <button
-                                        type="submit"
-                                        className={(
-                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                            'block w-full px-4 py-2 text-left text-sm hover:bg-slate-300'
-                                        )}
-                                    >
-                                        Sign out
-                                    </button>
+                                    // <button
+                                    //     //type="submit"
+                                    //     className={('bg-white text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-slate-300')}
+                                    //     onClick={logout}
+                                    // >
+                                    //     Sign out
+                                    // </button>
+                                    <NavLink to={"/"} exact
+                                        className="Nav_link bg-white text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-slate-300"
+                                        activeStyle={{ color: 'white' }} onClick={logout}>Logout </NavLink>
                                 )}
                             </Menu.Item>
                         </form>

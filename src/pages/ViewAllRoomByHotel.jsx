@@ -20,6 +20,11 @@ const ViewAllRoomByHotel = () => {
     return (
         <div className="flex justify-center">
             <div className="w-11/12">
+                <div className="flex justify-center mb-10">
+                    <Link to={`/room/add-the-new-room/${idHotel}`} className="">
+                        <button className="truncate bg-red-500 px-4 py-2 rounded-3xl">Add the new room</button>
+                    </Link>
+                </div>
                 <div className="grid justify-center items-center grid-cols-[1fr_1fr_1fr_1fr] gap-10
                 max-[500px]:grid-cols-[1fr]
                 ">

@@ -23,11 +23,13 @@ export default function PlaceGallery({ place }) {
                         </button>
                     </div>
                     {place?.photos?.length > 0 && place.photos.map(photo => (
-                        <div>
-                            <img
-                                //  src={`${import.meta.env.VITE_BASE_URL}/uploads/${photo}`} 
-                                src={photo}
-                                alt="" />
+                        <div className="flex justify-center">
+                            <div className="w-full">
+                                <img
+                                    //  src={`${import.meta.env.VITE_BASE_URL}/uploads/${photo}`} 
+                                    src={photo}
+                                    alt="" className="w-full" />
+                            </div>
                         </div>
                     ))}
                 </div>
