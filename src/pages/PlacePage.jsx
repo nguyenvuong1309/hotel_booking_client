@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
+import { Link, Navigate, useParams } from "react-router-dom"
 
 import BookingWidget from "../BookingWidget";
 import PlaceGallery from "../PlaceGallery";
@@ -15,6 +15,7 @@ export default function PlacePage() {
     const { id } = useParams();
     const [place, setPlace] = useState(null);
     const [room, setRoom] = useState();
+    const [goToPageChatWithHotelOwner, setGoToPageChatWithHotelOwner] = useState(false);
     useEffect(() => {
         if (!id) {
             return;
@@ -41,6 +42,10 @@ export default function PlacePage() {
 
     if (temp?.length > 4) {
         temp = temp.slice(0, 4)
+    }
+
+    if (goToPageChatWithHotelOwner) {
+        return <Navigate to={"/chat"} />
     }
     return (
         <div className="flex justify-center">
@@ -163,11 +168,14 @@ export default function PlacePage() {
                         <div className="w-3/12 border border-slate-400 mt-10
                     max-[400px]:w-full
                     ">
-                            <a href={'https://maps.google.com/?q=' + place?.title} target="_blank" >
-                                <img src={"https://cdn6.agoda.net/images/MAPS-1214/default/property-map-entry-1.svg?s=1024x"} alt="" />
+                            <a href={'https://maps.google.com/?q=' + place?.title} target="_blank" className="" >
+                                <img src={"https://cdn6.agoda.net/images/MAPS-1214/default/property-map-entry-1.svg?s=1024x"} alt="" className="" />
                             </a>
-                            <div className="flex items-center justify-center font-bold text-2xl m-10">
+                            <div className="flex items-center justify-center font-bold text-2xl mt-4">
                                 {place?.grade} Excellent
+                            </div>
+                            <div onClick={(ev) => { setGoToPageChatWithHotelOwner(true) }} className="flex justify-center mt-4">
+                                Chat with owner of hotel
                             </div>
                         </div>
                     </div>
@@ -218,6 +226,6 @@ export default function PlacePage() {
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
