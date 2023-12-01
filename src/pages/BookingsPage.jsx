@@ -27,7 +27,6 @@ export default function BookingsPage() {
                 Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
-            console.log("🚀 ~ file: BookingsPage.jsx:29 ~ useEffect ~ response:", response)
             setBookingRoom(response.data.slice(0).reverse());
         });
     }, [])

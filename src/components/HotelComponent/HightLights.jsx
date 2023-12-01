@@ -1,7 +1,6 @@
 
 
 export default function HightLights({ hightLights, setHightLights }) {
-    console.log("🚀 ~ file: HightLights.jsx:4 ~ HightLights ~ hightLights:", hightLights)
     function handleClick(ev) {
         const { checked, name } = ev.target;
         if (checked) {

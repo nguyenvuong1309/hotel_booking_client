@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
+    "dev:dev": "env-cmd -f .env.dev vite --host 0.0.0.0",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -28,6 +29,7 @@
     "chart.js": "2.9.3",
     "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
+    "env-cmd": "^10.1.0",
     "ethers": "^5.7.2",
     "fortawesome": "^0.0.1-security",
     "fs-react": "^0.0.4",

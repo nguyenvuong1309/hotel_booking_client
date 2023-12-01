@@ -39,7 +39,6 @@ export default function PlacesFormPage() {
             }
         },).then(response => {
             const { data } = response;
-            console.log("🚀 ~ file: PlacesFormPage.jsx:42 ~ useEffect ~ data:", data)
             setTitle(data.title);
             setAddress(data.address);
             setAddedPhotos(data.photos);

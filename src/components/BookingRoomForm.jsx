@@ -13,9 +13,7 @@ const BookingRoomForm = () => {
 
     const { id } = useParams();
     const [hotelRoom, setHotelRoom] = useState(null);
-    console.log("🚀 ~ file: BookingRoomForm.jsx:16 ~ BookingRoomForm ~ hotelRoom:", hotelRoom)
     const [hotel, setHotel] = useState(null);
-    console.log("🚀 ~ file: BookingRoomForm.jsx:18 ~ BookingRoomForm ~ hotel:", hotel)
     useEffect(() => {
         if (!id) {
             return;
@@ -26,7 +24,6 @@ const BookingRoomForm = () => {
                 Authorization: 'Bearer ' + localStorage.getItem('user:token')
             }
         },).then(response => {
-            console.log("🚀 ~ file: BookingRoomForm.jsx:27 ~ useEffect ~ response:", response)
             setHotelRoom(response.data);
             axios.get(`/hotels/${response?.data?.fields?.hotelId} `).then(res => {
                 return setHotel(res.data);

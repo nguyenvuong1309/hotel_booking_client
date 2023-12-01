@@ -12,7 +12,6 @@ function classNames(...classes) {
 
 export default function FlightDropdDown() {
     async function logout() {
-        console.log("in")
         // await axios.post("/logout", {
         //     headers: {
         //         'Content-Type': 'application/json',

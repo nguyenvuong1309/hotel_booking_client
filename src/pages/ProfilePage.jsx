@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfilePage({ user, setUser }) {
-    console.log("🚀 ~ file: ProfilePage.jsx:10 ~ ProfilePage ~ user:", user)
     async function logout() {
         await axios.post("/logout", {
             headers: {
@@ -25,7 +24,6 @@ export default function ProfilePage({ user, setUser }) {
     const [isEditPage, setIsEditPage] = useState(true);
     const temp = { ...user }
     const [userInfo, setUserInfo] = useState(temp);
-    console.log("🚀 ~ file: ProfilePage.jsx:26 ~ ProfilePage ~ temp:", temp)
     const updateUser = async () => {
         await axios.put(`/users/${user?._id}`
             ,

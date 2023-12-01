@@ -16,16 +16,15 @@ const Dashboard = () => {
     const [conversations, setConversations] = useState([])
     const [messages, setMessages] = useState({})
     const [message, setMessage] = useState('')
-    console.log("🚀 ~ file: DashBoard.jsx:19 ~ Dashboard ~ message:", message)
     const [users, setUsers] = useState([])
     const [socket, setSocket] = useState(null)
     const messageRef = useRef(null)
 
     useEffect(() => {
-        // setSocket(io('http://localhost:8080'))
-        setSocket(io('https://hotel-booking-client-bice.vercel.app'))
+        //setSocket(io('http://localhost:8080'))
+        //setSocket(io('https://hotel-booking-client-bice.vercel.app'))
+        setSocket(io(`${import.meta.env.VITE_SOCKET_URL}`))
     }, [])
-
     useEffect(() => {
         socket?.emit('addUser', user?.id);
         socket?.on('getUsers', users => {
@@ -107,7 +106,6 @@ const Dashboard = () => {
     }
 
     const handleKeyDown = (event) => {
-        console.log("🚀 ~ file: DashBoard.jsx:109 ~ handleKeyDown ~ event:", event)
         if (event.key === 'Enter') {
             console.log('do validate')
         }
@@ -183,7 +181,6 @@ const Dashboard = () => {
                 {
                     messages?.receiver?.fullName &&
                     <div className='p-14 w-full flex items-center'>
-                        {console.log(message)}
                         <Input placeholder='Type a message...' value={message} sendMessage={sendMessage}
                             onChange={(e) => setMessage(e.target.value)} className='w-[75%]'
                             inputClassName='p-4 border-0 shadow-md rounded-full bg-light focus:ring-0 focus:border-0 outline-none'

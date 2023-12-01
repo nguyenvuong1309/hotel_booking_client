@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 const ViewAndEditRoomByHotel = () => {
     const { idHotelRoom } = useParams();
     const [room, setRoom] = useState(null);
-    console.log("🚀 ~ file: ViewAndEditRoomByHotel.jsx:13 ~ ViewAndEditRoomByHotel ~ room:", room)
     const [isEditPage, setIsEditPage] = useState(true);
 
     useEffect(() => {
@@ -29,7 +28,6 @@ const ViewAndEditRoomByHotel = () => {
             }
             //  { ...room.fields, extras: array }
         )
-        console.log(array)
     }
 
     const updateInfoRoom = () => {

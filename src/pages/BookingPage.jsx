@@ -14,12 +14,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function BookingPage() {
     const location = useLocation();
-    // console.log("🚀 ~ file: BookingPage.jsx:14 ~ BookingPage ~ location:", location.state.hotelRoomInfo.hotelRoom)
     const { id } = useParams();
     const [booking, setBooking] = useState(null);
     const [hotelRoom, setHotelRoom] = useState(null);
-    console.log("🚀 ~ file: BookingPage.jsx:18 ~ BookingPage ~ hotelRoom:", hotelRoom?.fields?.policyCancelBooking)
-    console.log(moment(booking?.checkIn).diff(moment(new Date()), 'days'))
     useEffect(() => {
         if (id) {
             axios.get(`/hotelRoomBooking/${id}`, {

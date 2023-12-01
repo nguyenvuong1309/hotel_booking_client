@@ -11,7 +11,6 @@ import { Link, useParams } from "react-router-dom";
 const ViewAllRoomByHotel = () => {
     const { idHotel } = useParams();
     const [hotelRooms, setHotelRooms] = useState(null);
-    console.log("🚀 ~ file: ViewAllRoomByHotel.jsx:14 ~ ViewAllRoomByHotel ~ hotelRooms:", hotelRooms)
     useEffect(() => {
         axios.get(`/rooms`).then(response => {
             setHotelRooms(response.data.filter(item => item.fields.hotelId === idHotel))

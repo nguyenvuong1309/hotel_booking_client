@@ -34,7 +34,6 @@ function DetailBusesBooking() {
     }, [])
 
     const bookCar = async (car) => {
-        console.log("🚀 ~ file: DetailBusesBoking.jsx:31 ~ bookCar ~ car:", car)
         if (user?._id) {
             if (car.numberRemain > 0) {
                 const data = {
@@ -86,7 +85,6 @@ function DetailBusesBooking() {
                         <div className="m-5    bg-slate-300">
                             <div className="flex justify-center items-center">
                                 <div className="m-2">
-                                    {console.log(item?.images?.[0])}
                                     <img src={item?.images?.[0]} alt="" />
                                 </div>
                             </div>

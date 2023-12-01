@@ -18,9 +18,7 @@ const Input = (
         sendMessage
     }
 ) => {
-    console.log("🚀 ~ file: Input.jsx:21 ~ value:", sendMessage)
     const handleKeyDown = (event) => {
-        console.log("🚀 ~ file: DashBoard.jsx:109 ~ handleKeyDown ~ event:", event)
         if (event.key === 'Enter') {
             sendMessage()
         }

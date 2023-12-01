@@ -27,8 +27,6 @@ const HotelList = () => {
         `/places?city=${destination}&min=${min || 0}&max=${max || 999}`
         // `/hotels`
     );
-    console.log("🚀 ~ file: HotelList.jsx:54 ~ HotelList ~ data:", data)
-
     const handleClick = () => {
         reFetch();
     };

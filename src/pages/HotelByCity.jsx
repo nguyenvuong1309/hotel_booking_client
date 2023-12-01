@@ -25,7 +25,6 @@ const HotelByCity = () => {
     const { data, loading, error, reFetch } = useFetch(
         `/hotels`
     );
-    console.log("🚀 ~ file: HotelByCity.jsx:35 ~ HotelByCity ~ data:", data)
     const [checkboxValues, setCheckboxValues] = useState(0);
 
     let temp = checkboxValues ? data.filter((item) => item.star === checkboxValues) : data
