@@ -64,7 +64,7 @@ export default function IndexPage() {
                 </div>
                 <div className="mt-10 grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-2">
                     {places.length > 0 && places.map(place => (
-                        <Link key={place._id} to={'/place/' + place._id} className="w-50 h-50">
+                        <Link key={place._id} to={'/place/' + place._id} className="w-50 h-50 hover:-translate-y-4 hover:shadow-md duration-300">
                             <div className="h-50 h-50 mb-2 flex ">
                                 {place.photos?.[0] && (
                                     <img

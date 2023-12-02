@@ -24,15 +24,15 @@ export default function FlightDropdDown() {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div className='flex items-center justify-center'>
-                <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-full bg-slate-500 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300">
-                    <svg className="h-7 w-7 text-black ml-2" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <Menu.Button className="flex justify-center items-center p-4 gap-2 rounded-full bg-slate-500 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300">
+                    <svg className="h-6 w-6 text-black" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
                     </svg>
                     <div>
                         Flight
                     </div>
-                    <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <ChevronDownIcon className="h-6 w-6 text-gray-200" aria-hidden="true" />
                 </Menu.Button>
             </div>
 
