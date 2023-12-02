@@ -76,11 +76,12 @@ function App() {
                 <Route path="/cars/createCar" element={<CreateCarPage />} />
 
 
-                <Route path="/chat" element={<Dashboard />} />
+
               </Route>
               <Route path="/booking-car" element={<BusesBooking />} />
               <Route path="/detail-booking-car" element={<DetailBusesBooking />} />
 
+              <Route path="/chat" element={<Dashboard />} />
               <Route path='/users/sign_in' element={<Form isSignInPage={true} />} />
               <Route path='/users/sign_up' element={<Form isSignInPage={false} />} />
 

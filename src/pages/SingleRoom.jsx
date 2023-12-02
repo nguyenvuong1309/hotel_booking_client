@@ -40,6 +40,7 @@ const SingleRoom = () => {
         images
     } = room;
     const [main, ...defaultImages] = images;
+    console.log("🚀 ~ file: SingleRoom.jsx:43 ~ SingleRoom ~ defaultImages:", defaultImages)
 
     return (
         <div>

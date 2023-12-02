@@ -202,9 +202,9 @@ export default function PlacePage() {
                                         max-[400px]:justify-center
                                         ">
                                     {temp?.length > 0 ? temp.map((item) => (
-                                        <div className="w-full">
+                                        <div className="w-full" key={item?.id} >
                                             <Link to={`/single-room/${item?._id}`}>
-                                                <ItemRoomInPlacePage room={item.fields} key={item?.id} />
+                                                <ItemRoomInPlacePage room={item.fields} />
                                             </Link>
                                         </div>
                                     )) : (
