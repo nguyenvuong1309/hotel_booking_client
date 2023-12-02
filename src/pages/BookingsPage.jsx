@@ -58,8 +58,8 @@ export default function BookingsPage() {
             </div> */}
             <div className="mt-10">
                 {bookingRoom?.length > 0 && bookingRoom.map(item => (
-                    <Link to={`/account/bookings/${item?._id}`} state={{ hotelRoomInfo: item }}>
-                        <div className="flex justify-center items-center h-fit mb-10" key={item?._id}>
+                    <Link to={`/account/bookings/${item?._id}`} state={{ hotelRoomInfo: item }} key={item?._id}>
+                        <div className="flex justify-center items-center h-fit mb-10">
                             <div className="w-10/12 bg-slate-100 flex
                             max-[500px]:grid
                             max-[500px]:text-[10px]

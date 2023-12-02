@@ -21,6 +21,8 @@ const TransferTokenPage = () => {
     const notify = () => toast("Wow so easy!");
     const address = useAddress();
     const { contract } = useContract(import.meta.env.VITE_SMART_CONTRACT_TRANSFER_TOKEN_ADDRESS);
+    console.log("🚀 ~ file: TransferTokenPage.jsx:24 ~ TransferTokenPage ~ contract:", contract)
+    console.log("🚀 ~ file: TransferTokenPage.jsx:24 ~ TransferTokenPage ~ contract:", contract?.address)
     const {
         data: verifiedTokens,
         isLoading: isVerifiedTokensLoading,
