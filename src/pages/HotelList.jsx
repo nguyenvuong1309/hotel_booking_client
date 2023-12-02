@@ -25,8 +25,12 @@ const HotelList = () => {
 
     const { data, loading, error, reFetch } = useFetch(
         `/places?city=${destination}&min=${min || 0}&max=${max || 999}`
-        // `/hotels`
     );
+
+    const sortHotelByCity = data.filter((item) => item.city === destination)
+    console.log("🚀 ~ file: HotelList.jsx:31 ~ HotelList ~ sortHotelByCity:", sortHotelByCity)
+
+
     const handleClick = () => {
         reFetch();
     };
@@ -150,7 +154,7 @@ const HotelList = () => {
                         "loading"
                     ) : (
                         <>
-                            {data.map((item) => (
+                            {sortHotelByCity.map((item, index) => (
                                 <div className="mb-4">
                                     <Link to={`/place/${item._id}`}>
                                         <SearchItem item={item} key={item._id} />

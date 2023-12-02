@@ -7,6 +7,7 @@ import BookingDate from "../BookingDate";
 import moment from "moment";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -17,6 +18,9 @@ export default function BookingPage() {
     const { id } = useParams();
     const [booking, setBooking] = useState(null);
     const [hotelRoom, setHotelRoom] = useState(null);
+    const navigate = useNavigate();
+
+
     useEffect(() => {
         if (id) {
             axios.get(`/hotelRoomBooking/${id}`, {
@@ -41,6 +45,7 @@ export default function BookingPage() {
         try {
             await axios.delete(`/hotelRoomBooking/${booking._id}`)
             toast.success("success cancel booking this hotel")
+            navigate(`/account/bookings`);
         }
         catch (err) {
             toast.error("some error occur while you cancel booking this hotel");

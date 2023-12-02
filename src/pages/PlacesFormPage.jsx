@@ -26,6 +26,8 @@ export default function PlacesFormPage() {
     const [airCondition, setAirCondition] = useState(false);
     const [grade, setGrade] = useState(10);
     const [photoLink, setPhotoLink] = useState('');
+    const [star, setStar] = useState(5);
+    const [city, setCity] = useState("");
 
 
     useEffect(() => {
@@ -52,6 +54,8 @@ export default function PlacesFormPage() {
             setAirCondition(data.aircondition);
             setFreeCancellation(data.freeCancellation);
             setPrice(data.price);
+            setStar(data?.star || 5);
+            setCity(data?.city || "null")
         })
     }, [id])
 
@@ -81,7 +85,7 @@ export default function PlacesFormPage() {
                 description, perks, extraInfo,
                 checkIn, checkOut, maxGuests,
                 price, hightLights, freeCancellation,
-                airCondition, grade
+                airCondition, grade, star, city
             };
             await axios.put(`/places/${id}`, { placeData },
                 {
@@ -100,7 +104,7 @@ export default function PlacesFormPage() {
                 description, perks, extraInfo,
                 checkIn, checkOut, maxGuests,
                 price, hightLights, freeCancellation,
-                airCondition, grade
+                airCondition, grade, star, city
             };
             await axios.post('/places',
                 { placeData },
@@ -145,6 +149,9 @@ export default function PlacesFormPage() {
 
                     {preInput('Address', 'Address for this place')}
                     <input type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder="adress" />
+
+                    {preInput('City', 'hotel in that city')}
+                    <input type="text" value={city} onChange={ev => setCity(ev.target.value)} placeholder="adress" />
 
                     {preInput('Photos', 'more = better')}
                     {/* <PhotosUploader addedPhotos={addedPhotos} on_Change={setAddedPhotos} /> */}
@@ -199,6 +206,9 @@ export default function PlacesFormPage() {
 
                     {preInput("Description", "description of the place")}
                     <textarea value={description} onChange={ev => setDescription(ev.target.value)} />
+
+                    {preInput("Star", "bla bla bla bla")}
+                    <input type="text" value={star} onChange={(ev) => setStar(ev.target.value)} />
 
                     {preInput("Perks", "select all the perks of your place")}
                     <Perks selected={perks} onChange={setPerks} />
