@@ -12,9 +12,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-import { useAddress, useContract, useTokenBalance } from "@thirdweb-dev/react";
+import { useAddress, useContract, useTokenBalance, useContractRead } from "@thirdweb-dev/react";
 import TransferButton from "./pages/nft-market-place/component-for-transfer-token/TransferButton";
-
+import { useNavigate } from 'react-router-dom';
 
 export default function BookingWidget(data) {
     const hotel = data?.data?.hotel;
@@ -25,24 +25,31 @@ export default function BookingWidget(data) {
     const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
-    const [redirect, setRedirect] = useState('');
+    const [redirect, setRedirect] = useState(false);
+    const [redirectUrl, setRedirectUrl] = useState("");
     const [hotelOwner, setHotelOwner] = useState(null);
 
     const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+
     let numberOfNights = 0;
     if (checkIn && checkOut) {
         numberOfNights = differenceInCalendarDays(new Date(checkOut), new Date(checkIn));
     }
 
     useEffect(() => {
-        setName(user?.name);
-    }, [user])
+        if (data && data.data && data.data.hotel && data.data.hotel.owner) {
+            axios.get(`/users/${data.data.hotel.owner}`).then((res) => {
+                setHotelOwner(res.data);
+            });
+        }
+    }, [data])
+
 
     useEffect(() => {
-        axios.get(`/users/${data?.data?.hotel?.owner}`).then((res) => {
-            setHotelOwner(res.data)
-        })
-    }, [])
+        setName(user?.name);
+
+    }, [user])
 
     async function bookThisPlace() {
         if (localStorage.getItem('user:token')) {
@@ -91,44 +98,31 @@ export default function BookingWidget(data) {
             await axios.put(`/rooms/${hotelRoom?._id}`, roomUpdateInfo)
 
             const bookingId = response.data._id;
-            setRedirect(`/account/bookings/${bookingId}`);
+            navigate(`/account/bookings/${bookingId}`);
+            setRedirectUrl(`/account/bookings/${bookingId}`);
+            setRedirect(true)
+
         } else {
-            setRedirect(`/login`)
+            navigate('/login')
+            setRedirectUrl(`/login`)
+            setRedirect(true)
             toast.error("You need to login to book hotelRoom");
         }
     }
 
     if (redirect) {
-        return <Navigate to={redirect} />
+        console.log("redirect");
+        // return <Navigate to={redirectUrl} />
     }
 
 
     const address = useAddress();
-    const { contract } = useContract(import.meta.env.VITE_TOKEN_ADDRESS);
+
+    const { contract } = useContract(import.meta.env.VITE_SMART_CONTRACT_TRANSFER_TOKEN_ADDRESS);
     const {
-        data: tokenBalance,
-        isLoading: isTokenBalanceLoading,
-    } = useTokenBalance(contract, address);
-    const paymentUsingToken = () => {
-        if (tokenBalance?.displayValue < numberOfNights * hotelRoom?.fields?.price) {
-            toast.error("Your balance is not sufficient to payment")
-        } else {
-            if (hotelOwner?.Web3AddressWallet) {
-                try {
-                    <div>
-                        <TransferButton key={contract.address} tokenAddress={import.meta.env.VITE_TOKEN_ADDRESS} receiver={hotelRoom.Web3AddressWallet} amount={hotelRoom?.fields?.price.toString()} message={"aaaa"} />
-                    </div>
-                    // toast.success("Success payment");
-                }
-                catch (err) {
-                    toast.error("error")
-                }
-            }
-            else {
-                toast.error("Hotel owner don't support payment using token");
-            }
-        }
-    }
+        data: verifiedTokens,
+        isLoading: isVerifiedTokensLoading,
+    } = useContractRead(contract, "getVerifiedTokens");
 
     return (
         <div className="bg-white shadow p-4 rounded-2xl">
@@ -185,15 +179,23 @@ export default function BookingWidget(data) {
                     </>
                 )}
             </button>
-            <div className="flex justify-center" onClick={paymentUsingToken}>
+            <div className="flex justify-center">
                 <div className="w-1/2">
                     {
                         hotelOwner?.Web3AddressWallet ? (
                             <div>
                                 <div className="flex justify-center mt-5">payment using token</div>
-                                <div className="flex justify-center">
-                                    <TransferButton key={contract.address} tokenAddress={import.meta.env.VITE_TOKEN_ADDRESS} receiver={hotelRoom.Web3AddressWallet} amount={hotelRoom?.fields?.price.toString()} message={"aaaa"} />
-                                </div>
+                                {
+                                    address ? (
+                                        <div className="flex justify-center">
+                                            <TransferButton key={contract?.address} tokenAddress={import.meta.env.VITE_TOKEN_ADDRESS} receiver={hotelOwner?.Web3AddressWallet} amount={hotelRoom?.fields?.price.toString()} message={"aaaa"} />
+                                        </div>
+                                    ) : (
+                                        <div key={contract?.address}>
+                                            Please connect your wallet to make a transfer.
+                                        </div>
+                                    )
+                                }
                             </div>
                             // toast.success("Success payment");
                         ) : (

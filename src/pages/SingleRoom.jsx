@@ -50,8 +50,8 @@ const SingleRoom = () => {
                 max-[500px]:justify-center
                 ">
                     {defaultImages.map((item, index) => (
-                        <div className="w-full flex justify-center">
-                            <img key={index} src={item} alt={name} className="w-3/4 
+                        <div className="w-full flex justify-center" key={index}>
+                            <img src={item} alt={name} className="w-3/4 
                         max-[500px]:w-11/12 
                         max-[500px]:mb-10
                         "/>
