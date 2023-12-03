@@ -15,20 +15,20 @@ import Footer from "../components/Footer";
 
 const HotelList = () => {
     const location = useLocation();
+
     const [destination, setDestination] = useState(location?.state?.destination);
-    const [dates, setDates] = useState(location?.state?.dates);
+    const [dates, setDates] = useState(location?.state?.date);
 
     const [openDate, setOpenDate] = useState(false);
     const [options, setOptions] = useState(location?.state?.options);
-    const [min, setMin] = useState(undefined);
-    const [max, setMax] = useState(undefined);
+    const [min, setMin] = useState(100);
+    const [max, setMax] = useState(1000);
 
     const { data, loading, error, reFetch } = useFetch(
         `/places?city=${destination}&min=${min || 0}&max=${max || 999}`
     );
 
     const sortHotelByCity = data.filter((item) => item.city === destination)
-    console.log("🚀 ~ file: HotelList.jsx:31 ~ HotelList ~ sortHotelByCity:", sortHotelByCity)
 
 
     const handleClick = () => {
@@ -44,10 +44,12 @@ const HotelList = () => {
                 {/* Form search */}
 
                 <div className="shadow-xl rounded-lg p-2 h-fit w-full sm:w-1/3" style={{ backgroundColor: '#94bbe9' }}>
-                    <h1 className="text-2xl font-bold text-center mb-2">Search</h1>
+                    <h1 className="text-2xl font-bold text-center mb-2">Filter</h1>
                     <div className="lsItem">
                         <label className="font-bold">Destination:</label>
-                        <input placeholder={destination} type="text" className="w-full p-2 mt-2 rounded-sm" onChange={(e) => setDestination(e.target.value)} />
+                        <input placeholder={destination} value={destination}
+                            type="text" className="w-full p-2 mt-2 rounded-sm"
+                            onChange={(e) => setDestination(e.target.value)} />
                     </div>
                     <div className="grid">
                         <label className="font-bold mt-4 mb-2">Check-in Date:</label>
@@ -61,9 +63,9 @@ const HotelList = () => {
                             )} to ${format(dates?.[0].endDate, "MM/dd/yyyy")}`} */}
                             {
                                 dates ?
-                                    (`${format(dates[0]?.startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`)
+                                    (`${format(dates[0]?.startDate, "dd/MM/yyyy")} to ${format(dates[0].endDate, "dd/MM/yyyy")}`)
                                     :
-                                    (`${format(new Date(), "MM/dd/yyyy")} to ${format(new Date(), "MM/dd/yyyy")}`)
+                                    (`${format(new Date(), "dd/MM/yyyy")} to ${format(new Date(), "dd/MM/yyyy")}`)
                             }
 
                         </span>
@@ -87,6 +89,7 @@ const HotelList = () => {
                             <input
                                 type="text"
                                 onChange={(e) => setMin(e.target.value)}
+                                value={min}
                                 className="rounded-sm px-2 w-3/4"
                             />
                         </div>
@@ -97,6 +100,7 @@ const HotelList = () => {
                             <input
                                 type="text"
                                 onChange={(e) => setMax(e.target.value)}
+                                value={max}
                                 className="rounded-sm px-2 w-3/4"
                             />
                         </div>
@@ -155,9 +159,9 @@ const HotelList = () => {
                     ) : (
                         <>
                             {sortHotelByCity.map((item, index) => (
-                                <div className="mb-4">
+                                <div className="mb-4" key={index}>
                                     <Link to={`/place/${item._id}`}>
-                                        <SearchItem item={item} key={item._id} />
+                                        <SearchItem item={item} />
                                     </Link>
                                 </div>
                             ))}

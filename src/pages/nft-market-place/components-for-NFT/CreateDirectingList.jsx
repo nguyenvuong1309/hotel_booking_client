@@ -5,7 +5,6 @@ import { useContract, useCreateDirectListing } from "@thirdweb-dev/react";
 
 const CreateDirectListing = () => {
     const { contract } = useContract("0x39798cAF83acCCACcC8b9BBC6158859E1330904D");
-    console.log("🚀 ~ file: CreateDirectingList.jsx:8 ~ CreateDirectListing ~ _isLoading:", contract)
     const {
         mutate: createDirectListing,
         isLoading,

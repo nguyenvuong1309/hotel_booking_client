@@ -111,7 +111,6 @@ export default function BookingWidget(data) {
     }
 
     if (redirect) {
-        console.log("redirect");
         // return <Navigate to={redirectUrl} />
     }
 
