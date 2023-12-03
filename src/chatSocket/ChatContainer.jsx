@@ -18,7 +18,10 @@ import UserLogin from './UserLogin';
 
 export default function ChatContainer() {
 
-    let socketio = socketIOClient("http://localhost:8080")
+    let socketio = socketIOClient(
+        import.meta.env.VITE_SOCKET_URL
+        //"http://localhost:8080"
+    )
     const [chats, setChats] = useState([])
     // console.log("🚀 ~ file: ChatContainer.jsx:23 ~ ChatContainer ~ chats:", chats)
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user:detail")))
