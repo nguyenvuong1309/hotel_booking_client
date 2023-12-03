@@ -37,15 +37,28 @@ export default function LoginPage() {
                         localStorage.setItem('user:token', result.token)
                         localStorage.setItem('user:detail', JSON.stringify(result.user))
 
-                        setUser(result.userInfo);
+                        axios.get('/profile',
+                            {
+                                headers:
+                                {
+                                    'Content-Type': 'application/json',
+                                    Authorization: 'Bearer ' + localStorage.getItem('user:token')
+                                }
+                            },
+                        ).then(({ data }) => {
+                            setUser(data)
+                        })
+
+                        // setUser(result.userInfo);
                         setRedirect(true);
                         toast.success("Login sucess");
+
+
                     }
                     else {
                         toast.error("Wrong credentials");
                     }
-                }
-                )
+                })
             // if (response) {
             //     response.json().then(userInfo => {
             //         setUser(userInfo);
