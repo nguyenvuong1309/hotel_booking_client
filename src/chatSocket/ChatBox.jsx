@@ -3,7 +3,7 @@ import { Avatar, Image } from 'antd'
 
 export default function ChatBoxReciever({ avatar, user, message }) {
     return (
-        <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row' }} >
+        <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row' }} className='mt-2'>
             <Avatar
                 size={50}
                 src={<Image
@@ -30,7 +30,7 @@ export default function ChatBoxReciever({ avatar, user, message }) {
 
 export function ChatBoxSender({ avatar, user, message }) {
     return (
-        <div style={{ display: 'flex', paddingRight: 10, justifyContent: 'flex-end', flexDirection: 'row' }} >
+        <div style={{ display: 'flex', paddingRight: 10, justifyContent: 'flex-end', flexDirection: 'row' }} className='mt-2'>
             <Avatar
                 size={50}
                 src={<Image
@@ -48,7 +48,9 @@ export function ChatBoxSender({ avatar, user, message }) {
                 <strong style={{ fontSize: 13 }} >
                     {user}
                 </strong> <br></br>
-                {message}
+                <div>
+                    {message}
+                </div>
             </p>
 
         </div>

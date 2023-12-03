@@ -20,8 +20,10 @@ export default function ChatContainer() {
 
     let socketio = socketIOClient("http://localhost:8080")
     const [chats, setChats] = useState([])
-    const [user, setUser] = useState(localStorage.getItem("user:detail"))
-    const avatar = localStorage.getItem('avatar')
+    // console.log("🚀 ~ file: ChatContainer.jsx:23 ~ ChatContainer ~ chats:", chats)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user:detail")))
+    // console.log("🚀 ~ file: ChatContainer.jsx:25 ~ ChatContainer ~ user:", JSON.parse(localStorage.getItem("user:detail")))
+    const avatar = localStorage.getItem('avatar') || "https://th.bing.com/th?id=OIP.P35wn07b6ZQzfPv9RhYmRQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
     // const chatsRef = collection(db, "Messages")
     const messagesEndRef = useRef(null)
     const scrollToBottom = () => {
@@ -77,10 +79,10 @@ export default function ChatContainer() {
 
     function addMessage(chat) {
         const newChat = {
-            ...chat,
-            user
+            message: chat,
+            user: user?.fullName,
             //: localStorage.getItem("user:detail")
-            , avatar
+            avatar: avatar
         }
         // addToFirrebase(chat)
         setChats([...chats, newChat])
@@ -95,7 +97,7 @@ export default function ChatContainer() {
 
     function ChatsList() {
         return chats.map((chat, index) => {
-            if (chat?.user === user) return <ChatBoxSender key={index} message={chat?.message} avatar={chat?.avatar} user={chat?.user} />
+            if (chat?.user === user?.fullName) return <ChatBoxSender key={index} message={chat?.message} avatar={chat?.avatar} user={chat?.user} />
             return <ChatBoxReciever key={index} message={chat?.message} avatar={chat?.avatar} user={chat?.user} />
         })
     }
@@ -127,10 +129,10 @@ export default function ChatContainer() {
 
             }
 
-            <div style={{ margin: 10, display: 'flex', justifyContent: 'center' }} >
+            {/* <div style={{ margin: 10, display: 'flex', justifyContent: 'center' }} >
                 <small style={{ backgroundColor: 'lightblue', padding: 5, borderRadius: 5 }} >Interested in some 1 on 1 Coding Tutorials and Mentorship. Lets chat on Discord: <strong> kutlo_sek#5370 </strong></small>
 
-            </div>
+            </div> */}
 
         </div>
     )

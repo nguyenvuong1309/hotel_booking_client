@@ -183,9 +183,8 @@ export default function PlacePage() {
                     </div>
                 </div>
 
-                <div className="flex justify-center items-center">
-                    <div className="w-11/12 bg-slate-600">
-                        a
+                <div className="flex justify-center items-center mt-10">
+                    <div className="w-11/12 bg-slate-600 pb-4">
                         <ChatContainer />
                     </div>
                 </div>
