@@ -1,0 +1,29 @@
+{
+    "SearchBar": {
+        "InputField": {
+            "message": "Bạn muốn đi đâu"
+        },
+        "Find": {
+            "message": "Tìm"
+        },
+        "Filter": {
+            "adult": "người lớn",
+            "children": "trẻ em",
+            "rooms": "phòng"
+        }
+    },
+    "TransportDropDown": {
+        "rentalCar": "thuê xe",
+        "flight": "chuyến bay",
+        "transport": "vận chuyển",
+        "bus": "xe buýt",
+        "ferry": "phà",
+        "train": "tàu"
+    },
+    "FlightDropdDown": {
+        "flight": "máy bay"
+    },
+    "RentalCarDropDown": {
+        "rentalCar": "thuê xe"
+    }
+}

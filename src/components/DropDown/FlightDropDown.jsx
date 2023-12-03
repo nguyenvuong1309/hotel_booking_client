@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
 
 
 function classNames(...classes) {
@@ -11,6 +12,7 @@ function classNames(...classes) {
 }
 
 export default function FlightDropdDown() {
+    const [t, i18n] = useTranslation("global");
     async function logout() {
         // await axios.post("/logout", {
         //     headers: {
@@ -30,7 +32,8 @@ export default function FlightDropdDown() {
                         <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
                     </svg>
                     <div>
-                        Flight
+                        {/* Flight */}
+                        {t("FlightDropdDown.flight")}
                     </div>
                     <ChevronDownIcon className="h-6 w-6 text-gray-200" aria-hidden="true" />
                 </Menu.Button>

@@ -1,0 +1,27 @@
+{
+    "SearchBar": {
+        "InputField": {
+            "message": "你要去哪里"
+        },
+        "Find": {
+            "message": "寻找"
+        },
+        "Filter": {
+            "adult": "大人",
+            "children": "孩子们",
+            "rooms": "房间"
+        }
+    },
+    "TransportDropDown": {
+        "transport": "运输",
+        "bus": "公共汽车",
+        "ferry": "渡船",
+        "train": "火车"
+    },
+    "FlightDropdDown": {
+        "flight": "航班"
+    },
+    "RentalCarDropDown": {
+        "rentalCar": "汽车租赁"
+    }
+}

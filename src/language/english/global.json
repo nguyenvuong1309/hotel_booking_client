@@ -1,0 +1,28 @@
+{
+    "SearchBar": {
+        "InputField": {
+            "message": "Where are you going? "
+        },
+        "Find": {
+            "message": "Find"
+        },
+        "Filter": {
+            "adult": "adult",
+            "children": "children",
+            "rooms": "rooms"
+        }
+    },
+    "TransportDropDown": {
+        "flight": "Flight",
+        "transport": "Transport",
+        "bus": "bus",
+        "ferry": "ferry",
+        "train": "train"
+    },
+    "FlightDropdDown": {
+        "flight": "flight"
+    },
+    "RentalCarDropDown": {
+        "rentalCar": "Rental car"
+    }
+}

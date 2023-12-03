@@ -4,10 +4,14 @@ import { Fragment, useContext } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { LanguageContext } from '../../context/LanguageContext'
-
+import { useTranslation } from 'react-i18next'
 
 const LanguageDropDown = () => {
+    const [t, i18n] = useTranslation("global");
     const { language, setLanguage } = useContext(LanguageContext);
+    const handleChangeLanguage = (lang) => {
+        i18n.changeLanguage(lang);
+    }
     return (
         <Menu as="div" className="relative inline-block text-left w-full">
             <div className='flex items-center justify-center w-full'>
@@ -42,7 +46,9 @@ const LanguageDropDown = () => {
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-2 text-sm hover:bg-slate-300'
                                     )}
-                                    onClick={() => { setLanguage("vietnam") }}
+                                    // onClick={() => { setLanguage("vietnam") }}
+                                    onClick={() => { handleChangeLanguage("vietnamese") }}
+
                                 >
                                     Viet Nam
                                 </a>
@@ -56,7 +62,8 @@ const LanguageDropDown = () => {
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-2 text-sm hover:bg-slate-300'
                                     )}
-                                    onClick={() => { setLanguage("english") }}
+                                    // onClick={() => { setLanguage("english") }}
+                                    onClick={() => { handleChangeLanguage("english") }}
                                 >
                                     Engish
                                 </a>
@@ -70,7 +77,8 @@ const LanguageDropDown = () => {
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-2 text-sm hover:bg-slate-300'
                                     )}
-                                    onClick={() => { setLanguage("chinese") }}
+                                    // onClick={() => { setLanguage("chinese") }}
+                                    onClick={() => { handleChangeLanguage("mandarind") }}
                                 >
                                     Chinese
                                 </a>

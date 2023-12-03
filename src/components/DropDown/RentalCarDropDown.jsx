@@ -1,28 +1,45 @@
+
+
+
+
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function TransportDropDown() {
+export default function RentalCarDropDown() {
     const [t, i18n] = useTranslation("global");
+    async function logout() {
+        // await axios.post("/logout", {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         authorization: 'Bearer ' + localStorage.getItem('token')
+        //     }
+        // });
+        // localStorage.removeItem('token');
+        // toast.success("Logout success");
+    }
     return (
         <Menu as="div" className="relative inline-block text-left">
-            <div>
-                <Menu.Button className="flex items-center p-4 justify-center gap-2 rounded-full bg-slate-500 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300">
-                    <svg className="h-6 w-6 text-black ml-2" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <circle cx="7" cy="17" r="2" />
-                        <circle cx="17" cy="17" r="2" />
-                        <path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
+            <div className='flex items-center justify-center'>
+                <Menu.Button className="flex justify-center items-center p-4 gap-2 rounded-full bg-slate-500 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300">
+                    <svg className="h-6 w-6 text-black" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />
+                        <circle cx="5" cy="18" r="3" />
+                        <circle cx="19" cy="18" r="3" />
+                        <polyline points="12 19 12 15 9 12 14 8 16 11 19 11" />
+                        <circle cx="17" cy="5" r="1" />
                     </svg>
                     <div>
-                        {/* Transport */}
-                        {t("TransportDropDown.transport")}
+                        {/* Rental car */}
+                        {t("RentalCarDropDown.rentalCar")}
                     </div>
                     <ChevronDownIcon className="h-6 w-6 text-gray-200" aria-hidden="true" />
                 </Menu.Button>
@@ -41,61 +58,59 @@ export default function TransportDropDown() {
                     <div className="py-1">
                         <Menu.Item>
                             {({ active }) => (
-                                <Link
-                                    to={'/booking-car'}
+                                <a
+                                    href="#"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
-                                    {/* Buses */}
-                                    {t("TransportDropDown.bus")}
-                                </Link>
+                                    Account settings
+                                </a>
                             )}
                         </Menu.Item>
                         <Menu.Item>
                             {({ active }) => (
-                                <Link
-                                    to={'/booking-car'}
+                                <a
+                                    href="#"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
-                                    {/* Ferries */}
-                                    {t("TransportDropDown.ferry")}
-                                </Link>
+                                    Support
+                                </a>
                             )}
                         </Menu.Item>
                         <Menu.Item>
                             {({ active }) => (
-                                <Link
-                                    to={'/booking-car'}
+                                <a
+                                    href="#"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
-                                    {/* Trains */}
-                                    {t("TransportDropDown.train")}
-                                </Link>
+                                    License
+                                </a>
                             )}
                         </Menu.Item>
-                        {/* <form method="POST" action="#">
+                        <form method="POST" action="#">
                             <Menu.Item>
                                 {({ active }) => (
-                                    <button
-                                        type="submit"
+                                    <div
                                         className={classNames(
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                             'block w-full px-4 py-2 text-left text-sm'
                                         )}
+                                        onClick={logout}
                                     >
+
                                         Sign out
-                                    </button>
+                                    </div>
                                 )}
                             </Menu.Item>
-                        </form> */}
+                        </form>
                     </div>
                 </Menu.Items>
             </Transition>
