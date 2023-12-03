@@ -23,11 +23,11 @@ const PropertyList = () => {
                 <>
                     {data &&
                         images.map((img, i) => (
-                            <Link to={"/Rooms"} className="grid" key={i}>
+                            <Link to={"/Rooms"} className="grid overflow-hidden rounded-t-lg" key={i}>
                                 <img
                                     src={img}
                                     alt=""
-                                    className="w-40 h-40 rounded-t-lg"
+                                    className="w-40 h-40 hover:scale-110 duration-300"
                                 />
                                 <div className="">
                                     <h1 className="font-bold mt-1">{data[i]?.type}</h1>

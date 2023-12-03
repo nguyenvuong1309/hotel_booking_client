@@ -4,17 +4,12 @@ import { Link } from "react-router-dom";
 
 const SearchItem = ({ item }) => {
     return (
-        <div className="flex items-center border border-solid bg-cover w-full mb-10 shadow-slate-950 bg-slate-300
-        max-[500px]:grid
-        ">
-
-            <div className=" flex items-center p-1 justify-center
-            max-[500px]:w-full
-            ">
-                <img src={item.photos[0]} alt="" className="flex items-center justify-center object-cover  w-[900px] h-[180px] " />
+        <div className="flex flex-wrap sm:flex-nowrap items-center sm:justify-center justify-between px-1 border border-solid w-full mb-10 shadow-slate-950 bg-slate-300">
+            <div className="w-full sm:w-2/5">
+                <img src={item.photos[0]} alt="" className="w-full" />
             </div>
 
-            <div className="grid ml-4 ">
+            <div className="grid ml-4 sm:hidden lg:block sm:w-1/3">
                 <h1 className=" text-cyan-400 font-bold text-xl">{item.name}</h1>
                 <span className="">{item.distance} m from center</span>
                 <span className="bg-emerald-600 w-32 rounded-2xl flex items-center justify-center">Free airport taxi</span>
@@ -56,8 +51,6 @@ const SearchItem = ({ item }) => {
                     </div>
                 </div>
             </div>
-
-
         </div >
     );
 };
