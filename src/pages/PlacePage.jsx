@@ -8,6 +8,7 @@ import AddressLink from "../AddressLink";
 import Comments from "../components/CommentSection/Comments";
 import ItemRoomInPlacePage from "../components/ItemRoomInPlacePage";
 import ChatSocketForm from "../components/ChatSocketForm";
+import ChatContainer from "../chatSocket/ChatContainer";
 
 
 
@@ -185,7 +186,7 @@ export default function PlacePage() {
                 <div className="flex justify-center items-center">
                     <div className="w-11/12 bg-slate-600">
                         a
-                        <ChatSocketForm />
+                        <ChatContainer />
                     </div>
                 </div>
 

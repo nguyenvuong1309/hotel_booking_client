@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -25,6 +26,7 @@
     "@thirdweb-dev/chains": "^0.1.58",
     "@thirdweb-dev/react": "4.0.9",
     "@thirdweb-dev/sdk": "^4.0.13",
+    "antd": "^5.11.5",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.0",
     "chart.js": "2.9.3",

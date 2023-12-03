@@ -43,20 +43,20 @@ const Dashboard = () => {
         messageRef?.current?.scrollIntoView({ behavior: 'smooth' })
     }, [messages?.messages])
 
-    useEffect(() => {
-        const loggedInUser = JSON.parse(localStorage.getItem('user:detail'))
-        const fetchConversations = async () => {
-            const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/conversations/${loggedInUser?.id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-            const resData = await res.json()
-            setConversations(resData)
-        }
-        fetchConversations()
-    }, [])
+        (() => {
+            const loggedInUser = JSON.parse(localStorage.getItem('user:detail'))
+            const fetchConversations = async () => {
+                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/conversations/${loggedInUser?.id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                const resData = await res.json()
+                setConversations(resData)
+            }
+            fetchConversations()
+        }, [])
 
     useEffect(() => {
         const fetchUsers = async () => {

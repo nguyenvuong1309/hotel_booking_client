@@ -4,7 +4,11 @@
 const ChatSocketForm = () => {
     return (
         <div>
-            chat socket
+            <div></div>
+            <div></div>
+            <div>
+                <input typ="text" />
+            </div>
         </div>
     )
 }
