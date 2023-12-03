@@ -12,7 +12,7 @@ const contractAddress = "0x39798cAF83acCCACcC8b9BBC6158859E1330904D"
 //const ownerAddress = "0x72fc2C9811abc21A534550f31C5bA62dcc56Ec53"
 export default function NftMarketPlace() {
 
-    const { contract } = useContract(contractAddress);
+    const { data: contract } = useContract(contractAddress);
     const ownerAddress = useAddress();
 
     const { data: nfts, isLoading, error } = useNFTs(contract);
