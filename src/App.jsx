@@ -40,6 +40,7 @@ import ViewAndEditRoomByHotel from './pages/ViewAndEditRoomByHotel';
 import CreateCarPage from './pages/BusesBookingPage/CreateCarPage';
 import Dashboard from './socket/DashBoard';
 import Form from './socket/Form';
+import MyBookingPage from './pages/BusesBookingPage/MyBooikingPage';
 
 
 
@@ -80,6 +81,7 @@ function App() {
               </Route>
               <Route path="/booking-car" element={<BusesBooking />} />
               <Route path="/detail-booking-car" element={<DetailBusesBooking />} />
+              <Route path="/detail-booking-car/my-booking" element={<MyBookingPage />} />
 
               <Route path="/chat" element={<Dashboard />} />
               <Route path='/users/sign_in' element={<Form isSignInPage={true} />} />

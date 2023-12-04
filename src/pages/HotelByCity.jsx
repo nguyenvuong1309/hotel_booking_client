@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 
 const HotelByCity = () => {
     const location = useLocation();
+    const city = location?.pathname.split('/')?.[2]
 
     const [destination, setDestination] = useState(location?.state?.destination);
     const [dates, setDates] = useState(location?.state?.dates);
@@ -26,8 +27,9 @@ const HotelByCity = () => {
         `/hotels`
     );
     const [checkboxValues, setCheckboxValues] = useState(0);
+    const HotelByCity = data.filter((item) => item?.city === city)
 
-    let temp = checkboxValues ? data.filter((item) => item.star === checkboxValues) : data
+    let temp = checkboxValues ? HotelByCity.filter((item) => item.star === checkboxValues) : HotelByCity
 
     const handleClick = () => {
         reFetch();

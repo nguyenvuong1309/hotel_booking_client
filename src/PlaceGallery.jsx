@@ -40,9 +40,9 @@ export default function PlaceGallery({ place }) {
         <div className="flex justify-center w-11/12">
             <div className="">
                 <div className="grid gap-2 grid-cols-[2fr_1fr_1fr_1fr]
-                max-[400px]:grid-cols-1
+                max-[500px]:grid-cols-1
                 ">
-                    <div className="w-[400px] h-[288px] max-[400px]:w-full">
+                    <div className="w-[400px] h-[288px] max-[500px]:w-full">
                         {place.photos?.[0] && (
                             <div className="">
                                 <img
@@ -55,7 +55,7 @@ export default function PlaceGallery({ place }) {
                         )}
                     </div>
                     <div className="grid gap-2
-                    max-[400px]:flex
+                    max-[500px]:flex
                     ">
                         <div className="w-[210px] h-[140px]
                         ">
@@ -78,7 +78,7 @@ export default function PlaceGallery({ place }) {
                         </div>
                     </div>
                     <div className="grid gap-2
-                              max-[400px]:flex
+                              max-[500px]:flex
                     ">
                         <div>
                             {place.photos?.[3] && (
@@ -103,7 +103,7 @@ export default function PlaceGallery({ place }) {
 
 
                     <div className="grid gap-2
-                              max-[400px]:flex
+                              max-[500px]:flex
                     ">
                         <div>
                             {place.photos?.[5] && (

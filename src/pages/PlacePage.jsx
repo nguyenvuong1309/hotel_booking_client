@@ -66,7 +66,7 @@ export default function PlacePage() {
 
                 <div className="flex justify-center gap-10">
                     <div className="w-11/12 flex justify-between 
-                max-[400px]:grid
+                max-[500px]:grid
                 ">
                         <div className="
                         max-[500px]:w-full
@@ -75,7 +75,7 @@ export default function PlacePage() {
                                 <div className="w-full border border-slate-400">
                                     <div className="font-bold m-4">Hightlights</div>
                                     <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] ml-10
-                                max-[400px]:grid-cols-[1fr_1fr]
+                                max-[500px]:grid-cols-[1fr_1fr]
                                 ">
                                         <div className="grid justify-start items-center">
                                             <div className="w-14">
@@ -125,8 +125,8 @@ export default function PlacePage() {
                                 <div className="w-full border border-slate-400">
                                     <div className="font-bold m-4">Facility</div>
                                     <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] ml-10
-                                max-[400px]:grid-cols-[1fr_1fr_1fr]
-                                max-[400px]:gap-x-5
+                                max-[500px]:grid-cols-[1fr_1fr_1fr]
+                                max-[500px]:gap-x-5
                                 ">
                                         <div className="grid justify-start items-center">
                                             <div className="font-bold truncate">
@@ -168,7 +168,7 @@ export default function PlacePage() {
                         </div>
 
                         <div className="w-3/12 border border-slate-400 mt-10
-                    max-[400px]:w-full
+                    max-[500px]:w-full
                     ">
                             <a href={'https://maps.google.com/?q=' + place?.title} target="_blank" className="" >
                                 <img src={"https://cdn6.agoda.net/images/MAPS-1214/default/property-map-entry-1.svg?s=1024x"} alt="" className="" />
@@ -204,9 +204,9 @@ export default function PlacePage() {
                             </div>
                             <div className="flex mt-2">
                                 <div className="grid grid-cols-[1fr_1fr]
-                                        max-[400px]:grid-cols-1
-                                        max-[400px]:w-full
-                                        max-[400px]:justify-center
+                                        max-[500px]:grid-cols-1
+                                        max-[500px]:w-full
+                                        max-[500px]:justify-center
                                         ">
                                     {temp?.length > 0 ? temp.map((item) => (
                                         <div className="w-full" key={item?.id} >

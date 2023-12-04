@@ -76,15 +76,15 @@ export default function BookingsPage() {
                                 max-[500px]:p-2
                                 ">
                                     <div className="text-2xl flex justify-start
-                                    max-[400px]:text-[13px]
-                                    max-[400px]:font-medium
+                                    max-[500px]:text-[13px]
+                                    max-[500px]:font-medium
                                     ">
                                         <div className="flex justify-start">Hotel name : </div>
                                         <div className="truncate">  {item?.hotelName}</div>
                                     </div>
                                     <div className="text-md flex
-                                      max-[400px]:text-[12px]
-                                      max-[400px]:font-medium
+                                      max-[500px]:text-[12px]
+                                      max-[500px]:font-medium
                                     ">
                                         <div>Address : </div>
                                         <div>  {item?.hotelAddress}</div>
