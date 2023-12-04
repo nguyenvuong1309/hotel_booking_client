@@ -20,12 +20,14 @@ import { ca } from "date-fns/locale";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 function DetailBusesBooking() {
     const [cars, setCars] = useState(null);
     const { user } = useContext(UserContext);
     const [redirect, setRedirect] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('/cars').then((response) => {
@@ -60,6 +62,8 @@ function DetailBusesBooking() {
                     description: car.description
                 }
                 await axios.put(`/cars/${car._id}`, infoUpdateCar);
+                navigate("/booking-car");
+
             }
             else {
                 toast.error("Sorry but this car now don't have seat available");
