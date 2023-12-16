@@ -111,19 +111,6 @@ export default function ChatContainer() {
             {
                 user ? (
                     <div>
-
-                        {/* <div style={{ display: 'flex', flexDirection: "row", justifyContent: 'space-between' }} >
-                            <h4>Username: {user}</h4>
-                            <strong>Remember to Subscribe to  <a href='https://www.youtube.com/channel/UCmoQtgmJ2SHEAPCAR1Q8TBA'> My Channel</a></strong>
-                            <p onClick={() => logout()} style={{ color: "blue", cursor: 'pointer' }} >Log Out</p>
-                        </div>
-                        <ChatsList
-                        />
-                        <InputText addMessage={addMessage} /> */}
-                        {/* 
-                        <ChatBoxReciever user="admin" avatar="https://th.bing.com/th?id=OIP.P35wn07b6ZQzfPv9RhYmRQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" message="hello vuong" />
-                        <ChatBoxSender user="vuong" avatar="https://th.bing.com/th?id=OIP.f_-KQ3xoCSWI-35mqR-7NgHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" message="hello admin" />
-                        */}
                         <ChatsList />
                         <InputText addMessage={addMessage} />
                     </div>)
@@ -131,11 +118,6 @@ export default function ChatContainer() {
                 // <UserLogin setUser={setUser} />
 
             }
-
-            {/* <div style={{ margin: 10, display: 'flex', justifyContent: 'center' }} >
-                <small style={{ backgroundColor: 'lightblue', padding: 5, borderRadius: 5 }} >Interested in some 1 on 1 Coding Tutorials and Mentorship. Lets chat on Discord: <strong> kutlo_sek#5370 </strong></small>
-
-            </div> */}
 
         </div>
     )
