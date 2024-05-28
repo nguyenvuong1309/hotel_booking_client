@@ -14,11 +14,42 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { setUser } = useContext(UserContext);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   axios.defaults.withCredentials = true;
   const captchaRef = useRef(null);
+
+  const validateEmail = (email) => {
+    if (!email) {
+      return "Email cannot be empty";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      return "Email address is invalid";
+    }
+    return "";
+  };
+
+  const validatePassword = (password) => {
+    if (!password) {
+      return "Password cannot be empty";
+    } else if (password.length < 8) {
+      return "Password must be at least 8 characters long";
+    }
+    return "";
+  };
+
   async function handleLoginSubmit(ev) {
     ev.preventDefault();
     const token = captchaRef.current.getValue();
+    const emailErr = validateEmail(email);
+    const passwordErr = validatePassword(password);
+    setEmailError(emailErr);
+    setPasswordError(passwordErr);
+
+    if (emailErr || passwordErr) {
+      toast.error("Please correct the errors in your form");
+      return;
+    }
+
     try {
       // const data = await axios.post('/login', { email, password });
       // setUser(data.data)
